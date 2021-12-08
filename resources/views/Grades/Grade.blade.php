@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('css')
 
+@toastr_css
+
 @section('title')
 tittle
 @stop
@@ -97,18 +99,21 @@ tittle
                         <div class="col">
                             <label for="Name" class="mr-sm-2">{{ trans('Grades.stage_name_ar') }}
                                 :</label>
-                            <input id="Name" type="text" name="Name" class="form-control">
+                            <input id="Name" type="text" name="Name" autocomplete="off" class="form-control">
                         </div>
                         <div class="col">
                             <label for="Name_en" class="mr-sm-2">{{ trans('Grades.stage_name_en') }}
                                 :</label>
-                            <input type="text" class="form-control" name="Name_en">
+                            <input type="text" class="form-control"  autocomplete="off" name="Name_en">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">{{ trans('Grades.Notes') }}
                             :</label>
-                        <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
+                        <textarea class="form-control" name="Notes_en" id="exampleFormControlTextarea1"
+                            rows="3"></textarea>
+                            <label for="exampleFormControlTextarea2"> {{ trans('Grades.Notes') }}</label>
+                            <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
                             rows="3"></textarea>
                     </div>
                     <br><br>
@@ -143,5 +148,6 @@ tittle
 <!-- row closed -->
 @endsection
 @section('js')
-
+    @toastr_js
+    @toastr_render
 @endsection

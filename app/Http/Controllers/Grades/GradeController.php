@@ -41,7 +41,7 @@ class GradeController extends Controller
   {
     try {
         $validated = $request->validated();
-        $Grade = new Grade();
+
         /*
         $translations = [
             'en' => $request->Name_en,
@@ -49,15 +49,20 @@ class GradeController extends Controller
         ];
         $Grade->setTranslations('Name', $translations);
         */
-        $Grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name];
-        $Grade->Notes = $request->Notes;
-        $Grade->save();
-        toastr()->success(trans('messages.success'));
+
+        Grade::create([
+            'Name'=>['en' => $request->Name_en, 'ar' => $request->Name],
+            'Notes'=>['en' =>$request->Notes_en, 'ar' => $request->Notes],
+
+        ]);
+
+
+        toastr()->success(trans('messages.sucess'));
         return redirect()->route('Grades.index');
     }
 
     catch (\Exception $e){
-        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        return redirect()->back()->withErrors(['err'=>$e->getMessage()]);
     }
 
   }
