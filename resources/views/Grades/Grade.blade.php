@@ -7,6 +7,7 @@
 tittle
 @stop
 @endsection
+
 @section('page-header')
 <!-- breadcrumb -->
 <div>
@@ -134,6 +135,7 @@ tittle
 </div>
 <!-- breadcrumb -->
 @endsection
+
 @section('content')
 <!-- row -->
 <!-- <div class="row">
