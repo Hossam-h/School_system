@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\Controller\Grades;
+//use \App\Http\Controllers\ClassroomController;
+//use \App\Http\Controllers\classrooms\ConnactController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,8 +53,13 @@ Route::group([
     Route::group(['namespace' => 'Grades'], function () {
         Route::resource('Grades', 'GradeController');
     });
+    Route::group(['namespace' => 'Classrooms'], function () {
+        Route::resource('Classrooms', 'ClassroomController');
+
+    });
 
 
+   // Route::resource('Classrooms', 'ClassroomController');
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 });
 
