@@ -26,6 +26,8 @@ use \App\Http\Controllers\Controller\Grades;
 // routes/web.php
 Auth::routes();
 
+
+
 Route::group(['middleware' => ['guest']], function () {
 
         Route::get('/', function () {
@@ -45,34 +47,18 @@ Route::group([
 
 
 
-    // Route::get('/home', function()
-    // {
-    // 	return View::make('empty');
-    // });
-
+    //=====================Grades========================
     Route::group(['namespace' => 'Grades'], function () {
         Route::resource('Grades', 'GradeController');
     });
+
+    //=====================Classrooms========================
     Route::group(['namespace' => 'Classrooms'], function () {
         Route::resource('Classrooms', 'ClassroomController');
 
     });
 
-
-   // Route::resource('Classrooms', 'ClassroomController');
+    //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 });
 
-//sdkfjg jdfghsdfdfgtsdfgsjkhjklhkljkgjkhgjhk
-/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
-//sdlfhsdf
-//sdlfhsdf
-//sdlfhsdf
-//sdlfhsdf
-//sdlfhsdf
-//sdlfhsdf
-//sdlfhsdf
-//sdlfhsdf
-//sdlfhsdf
-
-//sdlfhsdf

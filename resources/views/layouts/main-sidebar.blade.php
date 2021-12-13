@@ -25,8 +25,7 @@
                     <!-- menu item Elements-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
-                            <div class="pull-left"><i class="ti-palette"></i><span
-                                    class="right-nav-text">{{__('main_side.Grades')}}</span></div>
+                            <div class="pull-left"><i class="ti-palette"></i><span class="right-nav-text">{{__('main_side.Grades')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -37,17 +36,16 @@
                     </li>
                     <!-- menu item calendar-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
-                            <div class="pull-left"><i class="ti-calendar"></i><span
-                                    class="right-nav-text">calenda</span></div>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#classes-menu">
+                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('main_side.classes')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('Classrooms.index')}}">Events Calendar </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
+                        <ul id="classes-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('Classrooms.index')}}">{{trans('main_side.List_classes')}}</a></li>
                         </ul>
                     </li>
+
                     <!-- menu item todo-->
                     <li>
                         <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
@@ -66,8 +64,7 @@
                     <!-- menu item Charts-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
-                            <div class="pull-left"><i class="ti-pie-chart"></i><span
-                                    class="right-nav-text">Charts</span></div>
+                            <div class="pull-left"><i class="ti-pie-chart"></i><span class="right-nav-text">Charts</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -158,8 +155,7 @@
                     <!-- menu item Authentication-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#authentication">
-                            <div class="pull-left"><i class="ti-id-badge"></i><span
-                                    class="right-nav-text">Authentication</span></div>
+                            <div class="pull-left"><i class="ti-id-badge"></i><span class="right-nav-text">Authentication</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -201,9 +197,7 @@
                                         </a>
                                         <ul id="login" class="collapse">
                                             <li>
-                                                <a href="javascript:void(0);" data-toggle="collapse"
-                                                    data-target="#invoice">level item 1.1.1<div class="pull-right"><i
-                                                            class="ti-plus"></i></div>
+                                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice">level item 1.1.1<div class="pull-right"><i class="ti-plus"></i></div>
                                                     <div class="clearfix"></div>
                                                 </a>
                                                 <ul id="invoice" class="collapse">

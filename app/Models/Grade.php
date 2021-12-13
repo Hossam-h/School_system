@@ -19,7 +19,7 @@ class Grade extends Model
     public $translatable = ['Name','Notes'];
 
     public function classrooms(){
-            return $this->hasMany(ModelsClassroom::class);
+            return $this->hasMany(Classroom::class);
     }
 
 
