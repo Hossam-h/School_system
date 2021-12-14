@@ -28,6 +28,7 @@ class Classroom extends FormRequest
             //we write Arrya_name.*.Key to validte array
             'List_Classes.*.Name'=>'required|unique:classrooms,name->ar'.$this->id,
             'List_Classes.*.Name_en'=>'required|unique:classrooms,name->en'.$this->id,
+            
 
         ];
     }

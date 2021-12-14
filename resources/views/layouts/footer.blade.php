@@ -16,3 +16,22 @@
       </div>
     </footer>
 <!-- Footer closed -->
+<script>
+    function CheckAll(classname,el){
+    let elements=document.getElementsByClassName(classname);
+   let el_Lenght = elements.length
+
+   if(el.checked){
+
+       for(let i=0; i<el_Lenght; i++ ){
+        elements[i].checked=true
+       }
+   }else{
+    for(let i=0; i<el_Lenght; i++ ){
+        elements[i].checked=false
+       }
+   }
+
+}
+
+</script>

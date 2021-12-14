@@ -30,7 +30,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('Grades.index')}}">{{__('main_side.Grade_list')}}</a></li>
+                            <li><a href="{{route('Grades.index')}}">{{__('main_side.Grades_list')}}</a></li>
 
                         </ul>
                     </li>

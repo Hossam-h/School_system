@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Http\Requests\Classroom as Classvalidate;
+use Exception;
 use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,7 @@ class ClassroomController extends Controller
      */
     public function index()
     {
+
 
         $My_Classes = Classroom::all();
         $Grades = Grade::all();
@@ -100,9 +102,34 @@ class ClassroomController extends Controller
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classroom $classroom)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $editClass= Classroom::find($id);
+
+          $this->validate($request,[
+
+            'Name_en'=>'required',
+            'Name'=>'required',
+          ],
+          [
+             'Name.required'=>trans('validation.required'),
+             'Name_en.required'=>trans('validation.required'),
+          ]);
+
+          $editClass->update([
+           $editClass->name=['en'=>$request->Name_en,'ar'=>$request->Name],
+           $editClass->grade_id=$request->Grade_id
+          ]);
+
+          toastr()->success(trans('messages.success'));
+            return redirect()->route('Classrooms.index');
+
+
+        }catch(Exception $e){
+           return redirect()->back()->withErrors(['error'=>$e->getMessage()]);
+        }
+
     }
 
     /**
@@ -111,8 +138,21 @@ class ClassroomController extends Controller
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classroom $classroom)
+    public function destroy($id)
     {
-        //
+
+        try{
+             Classroom::destroy($id);
+             toastr()->error(trans('messages.delete'));
+             return redirect()->route('Classrooms.index');
+        }catch(Exception $e){
+            return redirect()->back()->withErrors(['error'=>$e->getMessage()]);
+        }
+
+    }
+
+    public function delete_all(Request $request)
+    {
+
     }
 }

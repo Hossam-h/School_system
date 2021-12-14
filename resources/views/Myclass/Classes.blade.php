@@ -103,22 +103,22 @@
                                                     <div class="col">
                                                         <label for="Name" class="mr-sm-2">{{ trans('My_Classes_trans.name') }}
                                                             :</label>
-                                                        <input id="Name" type="text" name="Name" class="form-control" value="{{ $My_Class->getTranslation('name', 'ar') }}" required>
+                                                        <input id="Name" type="text" name="Name" class="form-control" value="{{ $My_Class->getTranslation('name', 'ar') }}">
                                                         <input id="id" type="hidden" name="id" class="form-control" value="{{ $My_Class->id }}">
                                                     </div>
                                                     <div class="col">
                                                         <label for="Name_en" class="mr-sm-2">{{ trans('My_Classes_trans.name_en') }}
                                                             :</label>
-                                                        <input type="text" class="form-control" value="{{ $My_Class->getTranslation('name', 'en') }}" name="Name_en" required>
+                                                        <input type="text" class="form-control" value="{{ $My_Class->getTranslation('name', 'en') }}" name="Name_en">
                                                     </div>
                                                 </div><br>
                                                 <div class="form-group">
                                                     <label for="exampleFormControlTextarea1">{{ trans('My_Classes_trans.Name_Grade') }}
                                                         :</label>
                                                     <select class="form-control form-control-lg" id="exampleFormControlSelect1" name="Grade_id">
-                                                        <option value="{{ $My_Class->Grade->id }}">
+                                                        <!-- <option value="{{ $My_Class->Grade->id }}">
                                                             {{ $My_Class->Grade->Name }}
-                                                        </option>
+                                                        </option> -->
                                                         @foreach ($Grades as $Grade)
                                                         <option value="{{ $Grade->id }}">
                                                             {{ $Grade->Name }}
@@ -154,14 +154,14 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('Classrooms.destroy', 'test') }}" method="post">
+                                            <form action="{{ route('Classrooms.destroy',['Classroom'=>$My_Class->id]) }}" method="post">
                                                 {{ method_field('Delete') }}
                                                 @csrf
                                                 {{ trans('My_Classes_trans.Warning_Grade') }}
                                                 <input id="id" type="hidden" name="id" class="form-control" value="{{ $My_Class->id }}">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
-                                                    <button type="submit" class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
+                                                    <button type="submit" class="btn btn-danger">{{ trans('My_Classes_trans.delete_class') }}</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -199,14 +199,14 @@
                                         <div class="row">
 
                                             <div class="col">
-                                                <label for="Name" class="mr-sm-2">{{ trans('My_Classes_trans.name') }}
+                                                <label for="Name" class="mr-sm-2">{{ trans('My_Classes_trans.Name_class') }}
                                                     :</label>
                                                 <input class="form-control" type="text" name="Name" />
                                             </div>
 
 
                                             <div class="col">
-                                                <label for="Name" class="mr-sm-2">{{ trans('My_Classes_trans.name_en') }}
+                                                <label for="Name" class="mr-sm-2">{{ trans('My_Classes_trans.Name_class_en') }}
                                                     :</label>
                                                 <input class="form-control" type="text" name="Name_en" />
                                             </div>
@@ -274,6 +274,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form action="{{ route('delete_all') }}" method="POST">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    {{ trans('My_Classes_trans.Warning_Grade') }}
+                    <input class="text" type="hidden" id="delete_all_id" name="delete_all_id" value=''>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
+                    <button type="submit" class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
+                </div>
+            </form>
 
 
         </div>
