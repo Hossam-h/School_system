@@ -43,17 +43,29 @@
 
                 <br><br>
 
+              <form action="{{route('Filter_Classes')}}" method="post">
+                 {{@csrf_field()}}
+                <select class="selectpicker" data-style="btn-info" name="Grade_id" required
+                    onchange="this.form.submit()">
+                    <option value="" selected disabled>{{ trans('My_Classes_trans.Search_By_Grade') }}</option>
+                     @foreach($Grades as $Grade)
+                    <option value="{{$Grade->id}}">
+                           {{$Grade->Name}}
+                    </option>
+                    @endforeach
+                    </select>
 
+              </form>
 
 
                 <div class="table-responsive">
                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
                         <thead>
                             <tr>
-                                <th><input name="select_all" id="example-select-all" type="checkbox" onclick="CheckAll('box1', this)" /></th>
+                                <th> {{trans('My_Classes_trans.select_all')}} <input name="select_all" id="example-select-all" type="checkbox" onclick="CheckAll('box1', this)" /></th>
                                 <th>#</th>
-                                <th>{{ trans('My_Classes_trans.name') }}</th>
-                                <th>{{ trans('My_Classes_trans.name') }}</th>
+                                <th>{{ trans('My_Classes_trans.Name_class') }}</th>
+                                <th>{{ trans('My_Classes_trans.Name_Grade') }}</th>
                                 <th>{{ trans('My_Classes_trans.Processes') }}</th>
                             </tr>
                         </thead>

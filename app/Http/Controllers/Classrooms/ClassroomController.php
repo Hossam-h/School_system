@@ -49,9 +49,10 @@ class ClassroomController extends Controller
      */
     public function store(Classvalidate $request)
     {
-        $List_Classes = $request->List_Classes;
 
         try {
+            $List_Classes = $request->List_Classes;
+
             $validated=$request->validated();
 
             foreach ($List_Classes as $List_Class) {
@@ -92,7 +93,7 @@ class ClassroomController extends Controller
      */
     public function edit(Classroom $classroom)
     {
-        // test fetch
+
     }
 
     /**
@@ -153,6 +154,32 @@ class ClassroomController extends Controller
 
     public function delete_all(Request $request)
     {
+        try{
+          $val=$request->all();
+          $value_array=explode(',',$val['delete_all_id']);
+
+
+          // we use whereIn if request is array;
+        Classroom::whereIn('id',$value_array)->delete();
+            toastr()->error(trans('messages.delete'));
+            return redirect()->route('Classrooms.index');
+
+        }catch(Exception $e){
+           return redirect()->back()->withErrors(['error'=>$e->getMessage()]);
+        }
+
+
+    }
+
+    public function Filter_Classes(Request $request){
+         $Grades= Grade::all();
+          $filter_request=$request->all()['Grade_id'];
+         $search=Classroom::select('*')->where('grade_id',$filter_request)->get();
+
+         return view('Myclass.classes', compact('Grades','search'))->withDetails($search);
+
+
+
 
     }
 }

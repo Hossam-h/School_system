@@ -14,6 +14,7 @@ return [
     'required_ar'=>'Please Enter The class Name in Arabic',
     'required_en'=>'Please Enter The class Name in English',
     'Name_class_en'=>'Name class en',
+    'Name_class'=>'Name classes',
     'Name_Grade'=>'Name Grade',
     'add_row'=>'add row',
     'delete_row'=>'Delete row',
@@ -22,6 +23,7 @@ return [
     'Delete'=>'Delete',
     'delete_Class_Error'=>'The Class cannot be Deleted because it contains Sections',
     'Close' => 'Close',
+    'select_all'=>'Select all '
 
 
 
