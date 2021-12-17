@@ -61,6 +61,13 @@ Route::group([
 
     });
 
+     //=====================Sections========================
+     Route::group(['namespace' => 'Sections'], function () {
+        Route::resource('Sections', 'SectionController');
+        Route::get('/classes/{id}','SectionController@getclasses');
+    });
+
+
     //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 });
