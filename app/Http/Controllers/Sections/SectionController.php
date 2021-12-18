@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\Grade;
+use Exception;
 use Illuminate\Http\Request;
+use App\Http\Requests\Section as sectionValidate;
 
 class SectionController extends Controller
 {
@@ -19,10 +21,9 @@ class SectionController extends Controller
     public function index()
     {
         $Grades = Grade::with(['Sections'])->get();
-    $list_Grades = Grade::all();
-    //$teachers = Teacher::all();
-    return view('sections.sections',compact('Grades','list_Grades'));
-
+        $list_Grades = Grade::all();
+        //$teachers = Teacher::all();
+        return view('sections.sections', compact('Grades', 'list_Grades'));
     }
 
     /**
@@ -41,9 +42,25 @@ class SectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(sectionValidate $request)
     {
-        //
+        try {
+            $validated = $request->validated();
+
+            Section::create([
+                'Name_section' => ['en' => $request->Name_Section_Ar, 'ar' => $request->Name_Section_En],
+
+                'grade_id' => $request->Grade_id,
+                'classroom_id' => $request->Class_id,
+                'status' => 1
+            ]);
+
+            toastr()->success(trans('messages.sucess'));
+            return redirect()->route('Sections.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -75,9 +92,34 @@ class SectionController extends Controller
      * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Section $section)
+    public function update(sectionValidate $request)
     {
-        //
+        try {
+
+            $validated = $request->validated();
+            $section_update = Section::find($request->id);
+
+            if (isset($request->Status)) {
+                $section_update->update([
+                    'Name_section' => ['en' => $request->Name_Section_Ar, 'ar' => $request->Name_Section_En],
+                    'grade_id' => $request->Grade_id,
+                    'classroom_id' => $request->Class_id,
+                    'status' => 1
+                ]);
+            } else {
+                $section_update->update([
+                    'Name_section' => ['en' => $request->Name_Section_Ar, 'ar' => $request->Name_Section_En],
+                    'grade_id' => $request->Grade_id,
+                    'classroom_id' => $request->Class_id,
+                    'status' => 2
+               ]);
+            }
+
+            toastr()->success(trans('messages.edit'));
+            return redirect()->route('Sections.index');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -86,8 +128,24 @@ class SectionController extends Controller
      * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Section $section)
+    public function destroy(Request $request)
     {
-        //
+       try{
+        Section::destroy($request->id);
+
+        toastr()->error(trans('messages.delete'));
+        return redirect()->route('Sections.index');
+
+       }catch(Exception $e){
+return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+       }
+
+    }
+
+    public function getclasses($id)
+    {
+        $getClasses = Classroom::where('grade_id', $id)->pluck('name', 'id');
+
+        return json_encode($getClasses);
     }
 }

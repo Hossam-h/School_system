@@ -46,16 +46,21 @@
                         </ul>
                     </li>
 
-                    <!-- menu item todo-->
+
+
                     <li>
-                        <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
-                                list</span> </a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#section-menue">
+                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('Sections_trans.title_page')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="section-menue" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('Sections.index')}}">{{trans('Sections_trans.title_page')}}</a></li>
+                        </ul>
                     </li>
-                    <!-- menu item chat-->
-                    <li>
-                        <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
-                            </span></a>
-                    </li>
+
+
+
                     <!-- menu item mailbox-->
                     <li>
                         <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
