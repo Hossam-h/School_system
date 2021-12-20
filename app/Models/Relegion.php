@@ -11,4 +11,8 @@ class Relegion extends Model
 
     protected $fillable=['relegion'];
     public $translatable = ['relegion'];
+
+    public function Myparent(){
+        return $this->hasOne(Myparent::class);
+    }
 }

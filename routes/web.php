@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\Controller\Grades;
+use Livewire\Livewire;
+
 //use \App\Http\Controllers\ClassroomController;
 //use \App\Http\Controllers\classrooms\ConnactController;
 
@@ -67,6 +69,9 @@ Route::group([
         Route::get('/classes/{id}','SectionController@getclasses');
     });
 
+     //=====================livewire_parent========================
+
+     Route::view('add_parent','livewire.show_form');
 
     //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');

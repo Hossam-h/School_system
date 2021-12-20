@@ -10,4 +10,8 @@ class Nationalte extends Model
 
     protected $fillable=['name'];
     public $translatable = ['name'];
+
+    public function Myparent(){
+        return $this->hasOne(Myparent::class);
+    }
 }

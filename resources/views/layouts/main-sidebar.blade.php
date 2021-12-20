@@ -60,25 +60,20 @@
                     </li>
 
 
-
-                    <!-- menu item mailbox-->
                     <li>
-                        <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
-                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
-                    </li>
-                    <!-- menu item Charts-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
-                            <div class="pull-left"><i class="ti-pie-chart"></i><span class="right-nav-text">Charts</span></div>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#add_parent">
+                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('main_side.Parents')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="chart-js.html">Chart.js</a> </li>
-                            <li> <a href="chart-morris.html">Chart morris </a> </li>
-                            <li> <a href="chart-sparkline.html">Chart Sparkline</a> </li>
+                        <ul id="add_parent" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{url('add_parent')}}">{{trans('main_side.Add_Parent')}}</a></li>
                         </ul>
                     </li>
+
+
+
+
 
                     <!-- menu font icon-->
                     <li>
