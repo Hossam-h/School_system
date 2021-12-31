@@ -3,12 +3,20 @@
 namespace App\Models;
 
 use App\Models\Blood;
+use App\Models\ParentAttachment;
 use App\Models\Nationalte;
 use App\Models\Relegion;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Myparent extends Model
 {
+
+    use HasTranslations;
+    protected $table='myparents';
+    public $translatable = ['Name_Father','Job_Father','Name_Mother','Job_Mother'];
+
+    protected $guarded=[];
 
     public function blood(){
         return $this->belongsTo(Blood::class);
@@ -21,4 +29,8 @@ class Myparent extends Model
     public function nationalte(){
         return $this->belongsTo(Nationalte::class);
     }
+    public function parentAttachments(){
+        return $this->hasMany(ParentAttachment::class);
+    }
+
 }

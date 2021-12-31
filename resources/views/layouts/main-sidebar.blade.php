@@ -67,7 +67,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="add_parent" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{url('add_parent')}}">{{trans('main_side.Add_Parent')}}</a></li>
+                            <li><a href="{{route('Myparent.index')}}">{{trans('main_side.Add_Parent')}}</a></li>
                         </ul>
                     </li>
 

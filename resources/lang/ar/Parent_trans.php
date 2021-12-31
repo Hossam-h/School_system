@@ -31,6 +31,7 @@ return [
     'Passport_ID_Mother' => 'رقم جواز السفر',
     'Phone_Mother' => 'رقم الهاتف',
     'Address_Mother' => 'عنوان الام',
+    'file'=>'ارفاق ملف',
 
     'Next' => 'التالي',
     'Back' => 'السابق',

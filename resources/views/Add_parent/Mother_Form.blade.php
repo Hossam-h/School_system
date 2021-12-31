@@ -1,5 +1,5 @@
 <!--start maother------------------------------------------------------------------------------------->
-<div style="display: none" class="row setup-content" id="step-2">
+<div  class="row setup-content" id="step-2">
     <div class="col-xs-12">
         <div class="col-md-12">
             <br>
@@ -54,7 +54,7 @@
                     <label for="inputCity">{{trans('Parent_trans.Nationality_Father_id')}}</label>
                     <select class="custom-select my-1 mr-sm-2" name="Nationality_Mother_id">
                         <option selected>{{trans('Parent_trans.Choose')}}...</option>
-                        @foreach($Nationalities as $National)
+                        @foreach($nationalties as $National)
                         <option value="{{$National->id}}">{{$National->Name}}</option>
                         @endforeach
                     </select>
@@ -64,7 +64,7 @@
                     <label for="inputState">{{trans('Parent_trans.Blood_Type_Father_id')}}</label>
                     <select class="custom-select my-1 mr-sm-2" name="Blood_Type_Mother_id">
                         <option selected>{{trans('Parent_trans.Choose')}}...</option>
-                        @foreach($Type_Bloods as $Type_Blood)
+                        @foreach($bloodes as $Type_Blood)
                         <option value="{{$Type_Blood->id}}">{{$Type_Blood->type}}</option>
                         @endforeach
                     </select>
@@ -74,7 +74,7 @@
                     <label for="inputZip">{{trans('Parent_trans.Religion_Father_id')}}</label>
                     <select class="custom-select my-1 mr-sm-2" name="Religion_Mother_id">
                         <option selected>{{trans('Parent_trans.Choose')}}...</option>
-                        @foreach($Religions as $Religion)
+                        @foreach($relegions as $Religion)
                         <option value="{{$Religion->id}}">{{$Religion->relegion}}</option>
                         @endforeach
                     </select>
@@ -88,8 +88,8 @@
 
             </div>
 
-            
 
+
+        </div>
     </div>
-</div>
-<!--end maother----------------------------------------------------------------------------------------->
+    <!--end maother----------------------------------------------------------------------------------------->

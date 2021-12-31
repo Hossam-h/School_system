@@ -28,6 +28,7 @@ return [
     'Passport_ID_Mother' => 'Passport Number',
     'Phone_Mother' => 'Telephone Number',
     'Address_Mother' => 'Address Mother',
+    'file'=>'Upload file',
 
     'Next' => 'Next',
     'Back' => 'Back',
