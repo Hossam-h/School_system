@@ -68,8 +68,11 @@
                         </a>
                         <ul id="add_parent" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('Myparent.index')}}">{{trans('main_side.Add_Parent')}}</a></li>
+                            <li><a href="{{route('showall')}}">all</a></li>
                         </ul>
                     </li>
+
+                    
 
 
 

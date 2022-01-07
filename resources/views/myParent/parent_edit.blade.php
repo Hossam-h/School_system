@@ -52,16 +52,19 @@ empty
                             <br>
                             <div class="form-row">
                                 <div class="col">
-                                    <form action="{{route('Myparent.store')}}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{route('Myparent.update','test')}}" method="POST" enctype="multipart/form-data">
 
-                                        {{ csrf_field() }}
+                                    {{ method_field('patch') }}
+                                     {{ csrf_field() }}
+
+                                     <input type="text" hidden name="id" value="{{$parent_edit->id}}" class="form-control">
                                         <label for="title">{{trans('Parent_trans.Email')}}</label>
-                                        <input type="email" name="Email" class="form-control">
+                                        <input type="email" name="Email" value="{{$parent_edit->Email}}" class="form-control">
 
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Password')}}</label>
-                                    <input type="password" name="Password" class="form-control">
+                                    <input type="password" name="Password" value="{{$parent_edit->Password}}" class="form-control">
 
                                 </div>
                             </div>
@@ -69,12 +72,12 @@ empty
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Name_Father')}}</label>
-                                    <input type="text" name="Name_Father" class="form-control">
+                                    <input type="text" name="Name_Father" value="{{$parent_edit->getTranslation('Name_Father','ar')}}" class="form-control">
 
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Name_Father_en')}}</label>
-                                    <input type="text" name="Name_Father_en" class="form-control">
+                                    <input type="text" name="Name_Father_en" value="{{$parent_edit->getTranslation('Name_Father','en')}}" class="form-control">
 
                                 </div>
                             </div>
@@ -82,29 +85,29 @@ empty
                             <div class="form-row">
                                 <div class="col-md-3">
                                     <label for="title">{{trans('Parent_trans.Job_Father')}}</label>
-                                    <input type="text" name="Job_Father" class="form-control">
+                                    <input type="text" name="Job_Father" value="{{$parent_edit->getTranslation('Job_Father','ar')}}" class="form-control">
 
                                 </div>
                                 <div class="col-md-3">
                                     <label for="title">{{trans('Parent_trans.Job_Father_en')}}</label>
-                                    <input type="text" name="Job_Father_en" class="form-control">
+                                    <input type="text" name="Job_Father_en" value="{{$parent_edit->getTranslation('Job_Father','en')}}" class="form-control">
 
                                 </div>
 
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.National_ID_Father')}}</label>
-                                    <input type="text" name="National_ID_Father" class="form-control">
+                                    <input type="text" name="National_ID_Father" value="{{$parent_edit->National_ID_Father}}"class="form-control">
 
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Passport_ID_Father')}}</label>
-                                    <input type="text" name="Passport_ID_Father" class="form-control">
+                                    <input type="text" name="Passport_ID_Father" value="{{$parent_edit->Passport_ID_Father}}" class="form-control">
 
                                 </div>
 
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Phone_Father')}}</label>
-                                    <input type="text" name="Phone_Father" class="form-control">
+                                    <input type="text" name="Phone_Father" value="{{$parent_edit->Phone_Father}}" class="form-control">
 
                                 </div>
 
@@ -150,7 +153,7 @@ empty
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">{{trans('Parent_trans.Address_Father')}}</label>
-                                <textarea class="form-control" name="Address_Father" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                <textarea class="form-control" value="{{$parent_edit->Address_Father}}"  name="Address_Father" id="exampleFormControlTextarea1" rows="4"></textarea>
 
                             </div>
 
@@ -172,12 +175,12 @@ empty
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Name_Mother')}}</label>
-                                    <input type="text" name="Name_Mother" class="form-control">
+                                    <input type="text" value="{{$parent_edit->getTranslation('Name_Mother','ar')}}" name="Name_Mother" class="form-control">
 
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Name_Mother_en')}}</label>
-                                    <input type="text" name="Name_Mother_en" class="form-control">
+                                    <input type="text" name="Name_Mother_en" value="{{$parent_edit->getTranslation('Name_Mother','en')}}" class="form-control">
 
                                 </div>
                             </div>
@@ -185,29 +188,29 @@ empty
                             <div class="form-row">
                                 <div class="col-md-3">
                                     <label for="title">{{trans('Parent_trans.Job_Mother')}}</label>
-                                    <input type="text" name="Job_Mother" class="form-control">
+                                    <input type="text" name="Job_Mother" value="{{$parent_edit->getTranslation('Job_Mother','ar')}}" class="form-control">
 
                                 </div>
                                 <div class="col-md-3">
                                     <label for="title">{{trans('Parent_trans.Job_Mother_en')}}</label>
-                                    <input type="text" name="Job_Mother_en" class="form-control">
+                                    <input type="text" name="Job_Mother_en" value="{{$parent_edit->getTranslation('Job_Mother','en')}}" class="form-control">
 
                                 </div>
 
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.National_ID_Mother')}}</label>
-                                    <input type="text" name="National_ID_Mother" class="form-control">
+                                    <input type="text" name="National_ID_Mother" value="{{$parent_edit->National_ID_Mother}}" class="form-control">
 
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Passport_ID_Mother')}}</label>
-                                    <input type="text" name="Passport_ID_Mother" class="form-control">
+                                    <input type="text" name="Passport_ID_Mother" value="{{$parent_edit->Passport_ID_Mother}}" class="form-control">
 
                                 </div>
 
                                 <div class="col">
                                     <label for="title">{{trans('Parent_trans.Phone_Mother')}}</label>
-                                    <input type="text" name="Phone_Mother" class="form-control">
+                                    <input type="text" name="Phone_Mother"  value="{{$parent_edit->Phone_Mother}}" class="form-control">
 
                                 </div>
 
@@ -284,4 +287,6 @@ empty
 @section('js')
 
 @toastr_js
+@toastr_render
+
 @endsection

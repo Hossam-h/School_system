@@ -36,6 +36,8 @@ return [
     'Choose' => 'Choose',
     'Attachments' => 'Attachments',
     'Processes' => 'Processes',
+    'delete_parent'=>'delete parent'
+
 
 
 ];

@@ -75,6 +75,7 @@ Route::group([
 
     Route::group(['namespace' => 'Myparent'], function () {
         Route::resource('Myparent', 'MyparentController');
+        Route::get('/parenr/all', 'MyparentController@showAll')->name('showall');
         //Route::get('/classes/{id}','SectionController@getclasses');
     });
 
@@ -85,5 +86,10 @@ Route::group([
     // Route::view('livewire','livewire.show_form');
     //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+
+    Route::get('/allparent', function(){
+        return view('myParent.parentes');
+    });
 });
 

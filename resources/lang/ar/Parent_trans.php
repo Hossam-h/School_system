@@ -39,6 +39,7 @@ return [
     'Choose' => 'اختيار من القائمة',
     'Attachments' => 'المرفقات',
     'Processes' => 'العمليات',
+    'delete_parent'=>'حذف'
 
 
 
