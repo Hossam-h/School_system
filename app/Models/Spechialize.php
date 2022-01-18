@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
+use App\Models\Teacher;
+
 class Spechialize extends Model
 {
     use HasTranslations;

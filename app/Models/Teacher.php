@@ -17,11 +17,11 @@ class Teacher extends Model
     // علاقة بين المعلمين والتخصصات لجلب اسم التخصص
     public function specializations()
     {
-        return $this->belongsTo(Spechialize::class);
+        return $this->belongsTo(Spechialize::class,'Specialization_id');
     }
     // علاقة بين المعلمين الفئات لجلب اسم التخصص
-    public function Genders()
+    public function genders()
     {
-        return $this->belongsTo(Gender::class);
+        return $this->belongsTo(Gender::class,'Gender_id');
     }
 }

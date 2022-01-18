@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Teacheres;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gender;
+use App\Models\Spechialize;
 use App\Repository\TeacherRepositoryInterface;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -20,9 +22,14 @@ class TeacherController extends Controller
         $this->Teacher=$teacher;
        }
 
-    public function index()
+        public function index()
     {
-        return $this->Teacher->getAll();
+
+        
+        $Teachers= $this->Teacher->getAllTeacher();
+
+        return view('Teachers.teachers',compact('Teachers'));
+
     }
 
     /**
@@ -32,7 +39,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $specializations = $this->Teacher->Getspecialization();
+         $genders = $this->Teacher->GetGender();
+        return view('Teachers.create',compact('specializations','genders'));
     }
 
     /**
@@ -43,7 +52,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->Teacher->StoreTeachers($request);
     }
 
     /**
@@ -63,9 +72,12 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit($id)
     {
-        //
+        $Teachers = $this->Teacher->editTeachers($id);
+        $specializations = $this->Teacher->Getspecialization();
+        $genders = $this->Teacher->GetGender();
+        return view('Teachers.Edit',compact('Teachers','specializations','genders'));
     }
 
     /**
@@ -75,9 +87,9 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request)
     {
-        //
+        return $this->Teacher->UpdateTeachers($request);
     }
 
     /**
@@ -86,8 +98,8 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Request $request)
     {
-        //
+        return $this->Teacher->Teacherdelete($request);
     }
 }
