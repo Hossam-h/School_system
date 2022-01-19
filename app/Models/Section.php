@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Classroom;
 use App\Models\Grade;
+use App\Models\Teacher;
 use Spatie\Translatable\HasTranslations;
 
 class Section extends Model
@@ -24,5 +25,9 @@ protected $translatable=['Name_section'];
 
     public function Classroom(){
         return $this->belongsTo(Classroom::class);
+    }
+
+    public function teachers(){
+        return $this->belongsToMany(Teacher::class,'teacher_section')->withPivot('id');
     }
 }

@@ -139,13 +139,22 @@
 
                                                                                 <div class="col">
                                                                                     <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>
-                                                                                    <select name="Class_id"   class="custom-select get_ajax">
+                                                                                    <select name="Class_id" class="custom-select get_ajax">
                                                                                         <option value="{{ $list_Sections->Classroom->id }}">
                                                                                             {{ $list_Sections->Classroom->name }}
                                                                                         </option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <br>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                                                                                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                                                                                        @foreach($teachers as $teacher)
+                                                                                        <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
 
                                                                                 <div class="col">
                                                                                     <div class="form-check">
@@ -248,11 +257,12 @@
 
 
                                     <div class="col">
-                                        <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Grade') }}</label>
+                                        <label for="inputName" class="control-label"> {{ trans('Sections_trans.Name_Grade') }}</label>
                                         <select name="Grade_id" class="custom-select" onchange="console.log($(this).val())">
                                             <!--placeholder-->
                                             <option value="" selected disabled>{{ trans('Sections_trans.Select_Grade') }}
                                             </option>
+
                                             @foreach ($list_Grades as $list_Grade)
                                             <option value="{{ $list_Grade->id }}"> {{ $list_Grade->Name }}
                                             </option>
@@ -260,6 +270,15 @@
                                         </select>
                                     </div>
                                     <br>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect2">Example multiple select</label>
+                                        <select multiple class="form-control" name="teacher_id[]" id="exampleFormControlSelect2">
+                                            @foreach($teachers as $teacher)
+                                            <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
                                     <div class="col">
                                         <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>

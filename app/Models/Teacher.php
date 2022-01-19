@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Spechialize;
 use App\Models\Gender;
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
@@ -23,5 +24,9 @@ class Teacher extends Model
     public function genders()
     {
         return $this->belongsTo(Gender::class,'Gender_id');
+    }
+
+    public function sections(){
+        return $this->belongsToMany(Section::class,'teacher_section')->withPivot('id');
     }
 }

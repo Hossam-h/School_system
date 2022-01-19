@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\Grade;
+use App\Models\Teacher;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Requests\Section as sectionValidate;
@@ -20,10 +21,11 @@ class SectionController extends Controller
      */
     public function index()
     {
+
         $Grades = Grade::with(['Sections'])->get();
         $list_Grades = Grade::all();
-        //$teachers = Teacher::all();
-        return view('sections.sections', compact('Grades', 'list_Grades'));
+        $teachers = Teacher::all();
+        return view('sections.sections', compact('Grades', 'list_Grades','teachers'));
     }
 
     /**
@@ -44,16 +46,18 @@ class SectionController extends Controller
      */
     public function store(sectionValidate $request)
     {
+
         try {
             $validated = $request->validated();
+            $Sections = new Section();
 
-            Section::create([
-                'Name_section' => ['en' => $request->Name_Section_Ar, 'ar' => $request->Name_Section_En],
+            $Sections->Name_section = ['en' => $request->Name_Section_Ar, 'ar' => $request->Name_Section_En];
 
-                'grade_id' => $request->Grade_id,
-                'classroom_id' => $request->Class_id,
-                'status' => 1
-            ]);
+            $Sections-> grade_id = $request->Grade_id;
+            $Sections-> classroom_id = $request->Class_id;
+            $Sections-> status = 1;
+           $Sections->save();
+            $Sections->teachers()->attach($request->teacher_id);
 
             toastr()->success(trans('messages.sucess'));
             return redirect()->route('Sections.index');
