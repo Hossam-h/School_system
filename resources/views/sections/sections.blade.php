@@ -149,7 +149,11 @@
 
                                                                                 <div class="form-group">
                                                                                     <label for="exampleFormControlSelect2">Example multiple select</label>
-                                                                                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                                                                                    <select multiple class="form-control" name="teacher_id[]" id="exampleFormControlSelect2">
+                                                                                        @foreach($list_Sections->teachers as $teacher)
+                                                                                        <option selected value="{{$teacher['id']}}">{{$teacher['Name']}}</option>
+                                                                                        @endforeach
+
                                                                                         @foreach($teachers as $teacher)
                                                                                         <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
                                                                                         @endforeach
@@ -273,6 +277,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect2">Example multiple select</label>
+                                        <!-- Add multiple teacher-->
                                         <select multiple class="form-control" name="teacher_id[]" id="exampleFormControlSelect2">
                                             @foreach($teachers as $teacher)
                                             <option value="{{$teacher->id}}">{{$teacher->Name}}</option>

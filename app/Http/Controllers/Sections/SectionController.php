@@ -22,9 +22,11 @@ class SectionController extends Controller
     public function index()
     {
 
+
         $Grades = Grade::with(['Sections'])->get();
         $list_Grades = Grade::all();
         $teachers = Teacher::all();
+
         return view('sections.sections', compact('Grades', 'list_Grades','teachers'));
     }
 
@@ -47,6 +49,7 @@ class SectionController extends Controller
     public function store(sectionValidate $request)
     {
 
+
         try {
             $validated = $request->validated();
             $Sections = new Section();
@@ -57,7 +60,7 @@ class SectionController extends Controller
             $Sections-> classroom_id = $request->Class_id;
             $Sections-> status = 1;
            $Sections->save();
-            $Sections->teachers()->attach($request->teacher_id);
+            $Sections->teachers()->syncWithoutDetaching($request->teacher_id);
 
             toastr()->success(trans('messages.sucess'));
             return redirect()->route('Sections.index');
@@ -98,8 +101,11 @@ class SectionController extends Controller
      */
     public function update(sectionValidate $request)
     {
+
+
         try {
 
+            
             $validated = $request->validated();
             $section_update = Section::find($request->id);
 
@@ -117,6 +123,10 @@ class SectionController extends Controller
                     'classroom_id' => $request->Class_id,
                     'status' => 2
                ]);
+            }
+
+            if(isset($request->teacher_id)){
+                $section_update->teachers()->sync($request->teacher_id);
             }
 
             toastr()->success(trans('messages.edit'));
