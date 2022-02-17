@@ -72,9 +72,7 @@ Route::group([
     Route::group(['namespace'=>'Teacheres'],function(){
         Route::resource('teacher','TeacherController');
     });
-     //=====================livewire_parent========================
-
-    //  Route::view('add_parent','livewire.show_form');
+     //=====================Parent========================
 
     Route::group(['namespace' => 'Myparent'], function () {
         Route::resource('Myparent', 'MyparentController');
@@ -82,12 +80,16 @@ Route::group([
         //Route::get('/classes/{id}','SectionController@getclasses');
     });
 
+     //=====================Student=============================
+    Route::group(['namespace' => 'Students'], function () {
+        Route::resource('Students', 'StudentController');
+        Route::get('Get_classerooms/{id}', 'StudentController@Get_classerooms');
+        Route::get('Get_section/{id}', 'StudentController@Get_section');
 
-    // Route::get('livewire',function(){
-    //    return view('Add_parent.add_parent');
-    // });
-    // Route::view('livewire','livewire.show_form');
-    //========================dashboard======================
+    });
+
+
+       //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 

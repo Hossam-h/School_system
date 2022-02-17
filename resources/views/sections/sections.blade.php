@@ -275,15 +275,7 @@
                                     </div>
                                     <br>
 
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect2">Example multiple select</label>
-                                        <!-- Add multiple teacher-->
-                                        <select multiple class="form-control" name="teacher_id[]" id="exampleFormControlSelect2">
-                                            @foreach($teachers as $teacher)
-                                            <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                
 
                                     <div class="col">
                                         <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>

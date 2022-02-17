@@ -85,6 +85,19 @@
                         </ul>
                     </li>
 
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#add_student">
+                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('Students_trans.add_student')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="add_student" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('Students.index')}}">{{trans('Students_trans.add_student')}}</a></li>
+
+                        </ul>
+                    </li>
+
+
 
 
 
