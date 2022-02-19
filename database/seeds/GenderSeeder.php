@@ -16,9 +16,9 @@ class GenderSeeder extends Seeder
     {
         DB::table('genders')->delete();
         $grades = [
-            ['en'=> 'Primary stage', 'ar'=> 'المرحلة الابتدائية'],
-            ['en'=> 'middle School', 'ar'=> 'المرحلة الاعدادية'],
-            ['en'=> 'High school', 'ar'=> 'المرحلة الثانوية'],
+            ['en'=> 'maile', 'ar'=> 'ذكر'],
+            ['en'=> 'female', 'ar'=> 'أنثي'],
+
         ];
 
 

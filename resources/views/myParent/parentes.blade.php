@@ -80,7 +80,7 @@ tittle
 
                                                 {{ method_field('Delete') }}
                                                 @csrf
-                                                <label > {{$my_parent->Name_Father}} </label> <br>
+                                                <label> {{$my_parent->Name_Father}} </label> <br>
                                                 <label class="btn btn-danger"> do you want to delete this parent </label>
 
 

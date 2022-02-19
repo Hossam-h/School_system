@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Models;
+use App\Models\Grade;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class Student extends Model
 {
-    use SoftDeletes;
+   // use SoftDeletes;
     use HasTranslations;
 
     public $translatable = ['name'];
@@ -26,7 +27,7 @@ class Student extends Model
 
     public function grade()
     {
-        return $this->belongsTo('App\Models\Grade');
+        return $this->belongsTo('App\Models\Grade','Grade_id');
     }
 
 
@@ -34,7 +35,7 @@ class Student extends Model
 
     public function classroom()
     {
-        return $this->belongsTo('App\Models\Classroom');
+        return $this->belongsTo('App\Models\Classroom','Classroom_id');
     }
 
     // علاقة بين الطلاب الاقسام الدراسية لجلب اسم القسم  في جدول الطلاب
@@ -55,7 +56,7 @@ class Student extends Model
 
     public function Nationality()
     {
-        return $this->belongsTo('App\Models\Nationalte');
+        return $this->belongsTo('App\Models\Nationalte','nationalitie_id');
     }
 
 
@@ -63,8 +64,17 @@ class Student extends Model
 
     public function myparent()
     {
-        return $this->belongsTo('App\Models\Myparent');
+        return $this->belongsTo('App\Models\Myparent','parent_id');
     }
 
+
+    public function blood()
+    {
+        return $this->belongsTo('App\Models\Blood','blood_id');
+    }
+
+    public function images (){
+          return $this->morphMany('App\Models\Image','imageable');
+    }
 
 }

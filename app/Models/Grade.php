@@ -5,6 +5,7 @@ namespace App\Models;
 
 use App\Models\Classroom;
 use App\Models\Section;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
@@ -26,7 +27,9 @@ class Grade extends Model
     public function sections(){
         return $this->hasMany(Section::class);
 }
-
+// public function students(){
+//     return $this->hasMany(Student::class);
+// }
 
 
 }

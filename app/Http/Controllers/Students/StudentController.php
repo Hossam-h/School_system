@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repository\StudentRepoInterface;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Http\Requests\student as studentValidtae;
 
 class StudentController extends Controller
 {
@@ -24,10 +25,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $add_student=$this->student->add_student();
-
-        return view('Students.Add_student',compact('add_student'));
-
+      return $this->student->list_student();
     }
 
     /**
@@ -37,7 +35,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $add_student=$this->student->add_student();
+
+        return view('Students.Add_student',compact('add_student'));
+
     }
 
     /**
@@ -46,9 +47,9 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(studentValidtae $request)
     {
-        $this->student->Store_Student($request);
+        return $this->student->Store_Student($request);
     }
 
     /**
@@ -68,9 +69,9 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id )
     {
-        //
+        return $this->student->edit_student($id);
     }
 
     /**
@@ -80,9 +81,10 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(studentValidtae $request)
     {
-        //
+        return $this->student->update_student($request);
+
     }
 
     /**
@@ -91,9 +93,10 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        
+      return  $this->student->del_student($id);
     }
 
     public function Get_classerooms($id){

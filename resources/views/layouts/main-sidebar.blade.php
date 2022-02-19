@@ -92,6 +92,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="add_student" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('Students.create')}}">{{trans('Students_trans.add_student')}}</a></li>
                             <li><a href="{{route('Students.index')}}">{{trans('Students_trans.add_student')}}</a></li>
 
                         </ul>

@@ -29,21 +29,24 @@
                 </div>
                 @endif
 
-                <form method="post" action="{{ route('Students.store') }}" autocomplete="off" enctype="multipart/form-data">
-                    @csrf
+                <form method="post" action="{{ route('Students.update','test') }}" autocomplete="off" enctype="multipart/form-data">
+
+                {{ method_field('patch') }}
+                {{ csrf_field() }}
+                   <input type="text" name="id"  hidden value="{{$st_edit->id}}">
                     <h6 style="font-family: 'Cairo', sans-serif;color: blue">{{trans('Students_trans.personal_information')}}</h6><br>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{trans('Students_trans.name_ar')}} : <span class="text-danger">*</span></label>
-                                <input type="text" name="name_ar" class="form-control">
+                                <input type="text" name="name_ar" value="{{$st_edit->getTranslation('name','ar')}}" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{trans('Students_trans.name_en')}} : <span class="text-danger">*</span></label>
-                                <input class="form-control" name="name_en" type="text">
+                                <input class="form-control" name="name_en" value="{{$st_edit->getTranslation('name','en')}}"type="text">
                             </div>
                         </div>
                     </div>
@@ -52,7 +55,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{trans('Students_trans.email')}} : </label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" value="{{$st_edit->email}}" class="form-control">
                             </div>
                         </div>
 
@@ -60,16 +63,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{trans('Students_trans.password')}} :</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password"  class="form-control">
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="gender">{{trans('Students_trans.gender')}} : <span class="text-danger">*</span></label>
-                                <select class="custom-select mr-sm-2" name="gender_id">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
-                                    @foreach($add_student['Genders'] as $Gender)
+                                <select class="custom-select mr-sm-2"  name="gender_id">
+                                    <option selected value="{{$st_edit->gender->id}}"> {{$st_edit->gender->Name}}</option>
+                                    @foreach($data['Genders'] as $Gender)
                                     <option value="{{ $Gender->id }}">{{ $Gender->Name }}</option>
                                     @endforeach
                                 </select>
@@ -80,8 +83,8 @@
                             <div class="form-group">
                                 <label for="nal_id">{{trans('Students_trans.Nationality')}} : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="nationalitie_id">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
-                                    @foreach($add_student['nationals'] as $nal)
+                                    <option selected value="{{$st_edit->Nationality->id}}" >{{$st_edit->Nationality->name}}</option>
+                                    @foreach($data['nationals'] as $nal)
                                     <option value="{{ $nal->id }}">{{ $nal->name }}</option>
                                     @endforeach
                                 </select>
@@ -92,8 +95,8 @@
                             <div class="form-group">
                                 <label for="bg_id">{{trans('Students_trans.blood_type')}} : </label>
                                 <select class="custom-select mr-sm-2" name="blood_id">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
-                                    @foreach($add_student['bloods']  as $bg)
+                                    <option selected value="{{$st_edit->blood->id}}" >{{$st_edit->blood->type}}</option>
+                                    @foreach($data['bloods']  as $bg)
                                     <option value="{{ $bg->id }}">{{ $bg->type }}</option>
                                     @endforeach
                                 </select>
@@ -103,7 +106,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{trans('Students_trans.Date_of_Birth')}} :</label>
-                                <input class="form-control" type="text" id="datepicker-action" name="Date_Birth" data-date-format="yyyy-mm-dd">
+                                <input class="form-control" type="text" id="datepicker-action" value="{{$st_edit->Date_Birth}}" name="Date_Birth" data-date-format="yyyy-mm-dd">
                             </div>
                         </div>
 
@@ -115,8 +118,8 @@
                             <div class="form-group">
                                 <label for="Grade_id">{{trans('Students_trans.Grade')}} : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="Grade_id">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
-                                    @foreach($add_student['my_grades']  as $c)
+                                    <option selected {{$st_edit->grade->id}}>{{$st_edit->grade->Name}}</option>
+                                    @foreach($data['my_grades']  as $c)
                                     <option value="{{ $c->id }}">{{ $c->Name }}</option>
                                     @endforeach
                                 </select>
@@ -145,8 +148,8 @@
                             <div class="form-group">
                                 <label for="parent_id">{{trans('Students_trans.parent')}} : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="parent_id">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
-                                    @foreach($add_student['parents'] as $parent)
+                                    <option selected value="{{$st_edit->myparent->id }}"  >{{ $st_edit->myparent->Name_Father }}</option>
+                                    @foreach($data['parents'] as $parent)
                                     <option value="{{ $parent->id }}">{{ $parent->Name_Father }}</option>
                                     @endforeach
                                 </select>
@@ -157,7 +160,7 @@
                             <div class="form-group">
                                 <label for="academic_year">{{trans('Students_trans.academic_year')}} : <span class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="academic_year">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
+                                    <option selected >{{$st_edit->academic_year }}</option>
                                     @php
                                     $current_year = date("Y");
                                     @endphp
