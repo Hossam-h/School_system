@@ -113,4 +113,9 @@ class StudentController extends Controller
     public function get_attchment($id,$namefile){
         return $this->student->get_attchment($id,$namefile);
     }
+
+    //delete attachment only
+    public function del_attchment($id,$namefile){
+       return $this->student->del_attchment($id,$namefile);
+    }
 }

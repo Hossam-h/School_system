@@ -10,12 +10,11 @@ use App\Models\Nationalte;
 use App\Models\Classroom;
 use App\Models\Section;
 use App\Models\Student;
-//use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 //use PHPUnit\Framework\MockObject\Builder\Stub;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Http\Requests\student as studentValidtae;
 
@@ -106,12 +105,18 @@ class StudentRepo implements StudentRepoInterface
     }
 
 
-    public function update_student(studentValidtae $request)
+    public function update_student(Request $request)
     {
+        // if(){
+        //     dd('ok');
+
+        // }else{
+        //     dd('no');
+        // }
 
         try {
 
-            $validated = $request->validated();
+
 
             $Edit_Students = Student::findorfail($request->id);
 
@@ -128,6 +133,27 @@ class StudentRepo implements StudentRepoInterface
             $Edit_Students->parent_id = $request->parent_id;
             $Edit_Students->academic_year = $request->academic_year;
             $Edit_Students->save();
+
+
+            //cheak of attachment
+            if ($request->file('photos')) {
+                foreach ($Edit_Students->images as $attach) {
+                    unlink('Attachments/student/' . $Edit_Students->name . '/' . $attach->filename);
+                    Image::where('filename', $attach->filename)->delete();
+
+                }
+                foreach ($request->file('photos') as $file) {
+                    $image = $file->getClientOriginalName();
+                    $file->move('Attachments/student/' . $Edit_Students->name, $image);
+                    $image_table = new Image();
+                    $image_table->filename = $image;
+                    $image_table->imageable_id = $Edit_Students->id;
+                    $image_table->imageable_type = 'App\Models\Student';
+                    $image_table->save();
+                }
+
+            }
+
 
 
             toastr()->success(trans('messages.edit'));
@@ -195,5 +221,12 @@ class StudentRepo implements StudentRepoInterface
 
         $files = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($st->name . '\\' . $namefile);
         return response()->file($files);
+    }
+
+     // delete attachment only
+        public function  del_attchment($id,$namefile){
+
+            dd($id,$namefile);
+
     }
 }

@@ -16,4 +16,8 @@ interface StudentRepoInterface{
     public function Get_section($id);
     public function show_Attach($id,$namefile);
     public function show($id);
+
+    // delete attachment only
+     public function  del_attchment($id,$namefile);
+
 }
