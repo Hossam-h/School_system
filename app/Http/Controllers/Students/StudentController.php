@@ -58,9 +58,9 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show($id)
     {
-        //
+       return $this->student->show($id);
     }
 
     /**
@@ -73,6 +73,10 @@ class StudentController extends Controller
     {
         return $this->student->edit_student($id);
     }
+
+     public function show_Attach($id,$namefile){
+        return $this->student->show_Attach($id,$namefile);
+     }
 
     /**
      * Update the specified resource in storage.
@@ -95,7 +99,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        
+
       return  $this->student->del_student($id);
     }
 
@@ -104,5 +108,9 @@ class StudentController extends Controller
     }
     public function Get_section($id){
         return $this->student->Get_section($id);
+    }
+
+    public function get_attchment($id,$namefile){
+        return $this->student->get_attchment($id,$namefile);
     }
 }

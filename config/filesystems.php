@@ -50,7 +50,7 @@ return [
 
         'public_uploads'=>[
             'driver' => 'local',
-            'root' => public_path().'\Attachments',
+            'root' => public_path().'\Attachments\student\\',
         ],
 
         'public' => [
@@ -59,6 +59,8 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+
+
 
         'upload_attachments' => [
             'driver' => 'local',

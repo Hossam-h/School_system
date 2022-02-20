@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repository;
 
 use App\Models\Blood;
@@ -12,6 +13,7 @@ use App\Models\Student;
 //use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 //use PHPUnit\Framework\MockObject\Builder\Stub;
 //use Illuminate\Http\Request;
 use App\Models\Image;
@@ -19,8 +21,10 @@ use App\Http\Requests\student as studentValidtae;
 
 //use App\Models\Classroom;
 
-class StudentRepo implements StudentRepoInterface{
-    public function add_student(){
+class StudentRepo implements StudentRepoInterface
+{
+    public function add_student()
+    {
         $data['my_grades'] = Grade::all();
         $data['parents'] = Myparent::all();
         $data['Genders'] = Gender::all();
@@ -31,36 +35,36 @@ class StudentRepo implements StudentRepoInterface{
         return $data;
     }
 
-    public function list_student(){
-       // dd(1);
-      // dd(Student::find(1)->grade);
-         $student_all= Student::all();
+    public function list_student()
+    {
+        // dd(1);
+        // dd(Student::find(1)->grade);
+        $student_all = Student::all();
 
-         return view('Students.list_student',compact('student_all'));
+        return view('Students.list_student', compact('student_all'));
     }
 
 
-    public function edit_student($id){
+    public function edit_student($id)
+    {
 
-            $data['my_grades'] = Grade::all();
-            $data['parents'] = Myparent::all();
-            $data['Genders'] = Gender::all();
-            $data['nationals'] = Nationalte::all();
-            $data['bloods'] = Blood::all();
-            $st_edit= Student::find($id);
-
-
-        return view('Students.edit_student',compact('data','st_edit'));
+        $data['my_grades'] = Grade::all();
+        $data['parents'] = Myparent::all();
+        $data['Genders'] = Gender::all();
+        $data['nationals'] = Nationalte::all();
+        $data['bloods'] = Blood::all();
+        $st_edit = Student::find($id);
 
 
+        return view('Students.edit_student', compact('data', 'st_edit'));
     }
 
-    public function Store_Student(studentValidtae $request){
+    public function Store_Student(studentValidtae $request)
+    {
 
 
-
+        DB::beginTransaction();
         try {
-
             $validated = $request->validated();
 
             $students = new Student();
@@ -78,37 +82,32 @@ class StudentRepo implements StudentRepoInterface{
             $students->academic_year = $request->academic_year;
             $students->save();
 
+            // add Attachment to student
+            if ($request->hasFile('photos')) {
 
-            if($request->hasFile('photos')){
-
-                foreach($request->file('photos') as $file){
-                $image = $file->getClientOriginalName();
-                  $file->move('Attachments/student/'.$students->name,$image);
-                  $image_table= New Image();
-                  $image_table->filename=$image;
-                  $image_table->imageable_id=$students->id;
-                  $image_table->imageable_type='App\Models\Student';
-                  $image_table->save();
-
+                foreach ($request->file('photos') as $file) {
+                    $image = $file->getClientOriginalName();
+                    $file->move('Attachments/student/' . $students->name, $image);
+                    $image_table = new Image();
+                    $image_table->filename = $image;
+                    $image_table->imageable_id = $students->id;
+                    $image_table->imageable_type = 'App\Models\Student';
+                    $image_table->save();
                 }
             }
 
-
+            DB::commit();
             toastr()->success(trans('messages.sucess'));
             return redirect()->route('Students.create');
-        }
-
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
-
-
     }
 
 
-    public function update_student(studentValidtae $request){
+    public function update_student(studentValidtae $request)
+    {
 
         try {
 
@@ -133,26 +132,25 @@ class StudentRepo implements StudentRepoInterface{
 
             toastr()->success(trans('messages.edit'));
             return redirect()->route('Students.index');
-
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
     }
 
-    public function del_student($id){
+
+    public function del_student($id)
+    {
+
+        $studete_attach = Student::find($id);
 
 
-        $studete_attach= Student::find($id);
-
-
-        if(isset($studete_attach->images->first()->imageable_id)){
-           foreach( $studete_attach->images as $attach){
-              unlink('Attachments/student/'.$studete_attach->name .'/'.$attach->filename );
-              Image::where('filename',$attach->filename)->delete();
-              Student::destroy($id);
-           }
-        }else{
+        if (isset($studete_attach->images->first()->imageable_id)) {
+            foreach ($studete_attach->images as $attach) {
+                unlink('Attachments/student/' . $studete_attach->name . '/' . $attach->filename);
+                Image::where('filename', $attach->filename)->delete();
+                Student::destroy($id);
+            }
+        } else {
             Student::destroy($id);
         }
 
@@ -161,14 +159,41 @@ class StudentRepo implements StudentRepoInterface{
         return redirect()->route('Students.index');
     }
 
-    public function Get_classerooms($id){
-     $classes= Classroom::where('Grade_id',$id)->pluck('name','id');
-     return $classes;
+    public function Get_classerooms($id)
+    {
+        $classes = Classroom::where('Grade_id', $id)->pluck('name', 'id');
+        return $classes;
     }
 
-    public function Get_section($id){
-        $sections= Section::where('classroom_id',$id)->pluck('Name_section','id');
+    public function Get_section($id)
+    {
+        $sections = Section::where('classroom_id', $id)->pluck('Name_section', 'id');
         return $sections;
     }
 
+
+    public function show($id)
+    {
+
+        $Student = Student::find($id);
+
+        return view('Students.show', compact('Student'));
+    }
+
+    public function get_attchment($id, $namefile)
+    {
+
+        $st = Student::find($id);
+        $downloadAttchment = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($st->name . '\\' . $namefile);
+        return response()->download($downloadAttchment);
+    }
+
+    public function show_Attach($id, $namefile)
+    {
+
+        $st = Student::find($id);
+
+        $files = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($st->name . '\\' . $namefile);
+        return response()->file($files);
+    }
 }
