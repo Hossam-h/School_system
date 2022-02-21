@@ -74,9 +74,7 @@ class StudentController extends Controller
         return $this->student->edit_student($id);
     }
 
-     public function show_Attach($id,$namefile){
-        return $this->student->show_Attach($id,$namefile);
-     }
+
 
     /**
      * Update the specified resource in storage.
@@ -110,12 +108,22 @@ class StudentController extends Controller
         return $this->student->Get_section($id);
     }
 
-    public function get_attchment($id,$namefile){
-        return $this->student->get_attchment($id,$namefile);
+    // to upload other atttchment
+    public function upload_attachment(Request $request){
+        return $this->student->upload_attachment($request);
+   }
+    // to download  files of attach
+    public function download_attchment($id,$namefile){
+        return $this->student->download_attchment($id,$namefile);
     }
 
     //delete attachment only
     public function del_attchment($id,$namefile){
        return $this->student->del_attchment($id,$namefile);
     }
+
+    // to show files of attch
+    public function show_Attach($id,$namefile){
+        return $this->student->show_Attach($id,$namefile);
+     }
 }

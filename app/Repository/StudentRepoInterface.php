@@ -1,6 +1,6 @@
 <?php
 namespace App\Repository;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Http\Requests\student as studentValidtae;
 
 interface StudentRepoInterface{
@@ -9,7 +9,7 @@ interface StudentRepoInterface{
     public function list_student();
     public function Store_Student(studentValidtae $request);
     public function update_student(studentValidtae $request);
-    public function get_attchment($id,$namefile);
+    public function download_attchment($id,$namefile);
     public function edit_student($id);
     public function del_student($id);
     public function Get_classerooms($id);
@@ -17,6 +17,8 @@ interface StudentRepoInterface{
     public function show_Attach($id,$namefile);
     public function show($id);
 
+   // upload attachment;
+    public function upload_attachment(Request $request);
     // delete attachment only
      public function  del_attchment($id,$namefile);
 

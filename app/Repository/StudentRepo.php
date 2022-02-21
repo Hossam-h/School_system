@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Http\Requests\student as studentValidtae;
+use Exception;
 
 //use App\Models\Classroom;
 
@@ -62,6 +63,7 @@ class StudentRepo implements StudentRepoInterface
     {
 
 
+
         DB::beginTransaction();
         try {
             $validated = $request->validated();
@@ -105,19 +107,12 @@ class StudentRepo implements StudentRepoInterface
     }
 
 
-    public function update_student(Request $request)
+    public function update_student(studentValidtae $request)
     {
-        // if(){
-        //     dd('ok');
-
-        // }else{
-        //     dd('no');
-        // }
 
         try {
 
-
-
+            $validated = $request->validated();
             $Edit_Students = Student::findorfail($request->id);
 
             $Edit_Students->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
@@ -151,9 +146,7 @@ class StudentRepo implements StudentRepoInterface
                     $image_table->imageable_type = 'App\Models\Student';
                     $image_table->save();
                 }
-
             }
-
 
 
             toastr()->success(trans('messages.edit'));
@@ -168,8 +161,6 @@ class StudentRepo implements StudentRepoInterface
     {
 
         $studete_attach = Student::find($id);
-
-
         if (isset($studete_attach->images->first()->imageable_id)) {
             foreach ($studete_attach->images as $attach) {
                 unlink('Attachments/student/' . $studete_attach->name . '/' . $attach->filename);
@@ -206,7 +197,7 @@ class StudentRepo implements StudentRepoInterface
         return view('Students.show', compact('Student'));
     }
 
-    public function get_attchment($id, $namefile)
+    public function download_attchment($id, $namefile)
     {
 
         $st = Student::find($id);
@@ -223,10 +214,41 @@ class StudentRepo implements StudentRepoInterface
         return response()->file($files);
     }
 
+
+    public function upload_attachment($request){
+
+
+
+            foreach ($request->file('photos') as $file) {
+                $image = $file->getClientOriginalName();
+                $file->move('Attachments/student/' . $request->student_name, $image);
+
+                $image_table = new Image();
+                $image_table->filename = $image;
+                $image_table->imageable_id = $request->student_id;
+                $image_table->imageable_type = 'App\Models\Student';
+                $image_table->save();
+
+
+            }
+            toastr()->success(trans('messages.edit'));
+            return redirect()->route('Students.index');
+
+    }
      // delete attachment only
         public function  del_attchment($id,$namefile){
 
-            dd($id,$namefile);
+            try{
+                $studete_attach=Student::find($id);
+                unlink('Attachments/student/' . $studete_attach->name . '/' . $namefile);
+                Image::where('filename',$namefile)->delete();
+
+                toastr()->error(trans('messages.delete'));
+                return redirect()->route('Students.show,$id');
+
+            }catch(Exception $e){
+                return redirect()->back()->withErrors(['errors'=>$e->getMessage()]);
+            }
 
     }
 }
