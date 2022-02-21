@@ -31,7 +31,8 @@ return [
     'created_at' => 'تاريخ الاضافة',
     'Download' => 'تحميل',
     'delete' => 'حذف',
-    'add_student'=>'اضافة طالب '
+    'add_student'=>'اضافة طالب ',
+    'Promotions'=>'ترقيات'
 
 
 

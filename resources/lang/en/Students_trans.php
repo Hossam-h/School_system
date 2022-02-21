@@ -31,6 +31,7 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
-    'add_student'=>'Add student '
+    'add_student'=>'Add student ',
+    'Promotions'=>'Promotions'
 
 ];

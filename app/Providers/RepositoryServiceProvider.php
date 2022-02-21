@@ -23,8 +23,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
         'App\Repository\StudentRepoInterface',
         'App\Repository\StudentRepo'
-);
+      );
 
+    $this->app->bind(
+        'App\Repository\StudentPromotionInterface',
+        'App\Repository\StudentPromotionRepo'
+    );
 
     }
 
