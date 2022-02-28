@@ -23,5 +23,6 @@ return [
     'Delete'=>'حذف',
     'delete_Class_Error'=>'لا يمكن حذف الصف لانه يحتوي علي اقسام',
     'Close' => 'اغلاق',
-    'select_all'=>'تحديد الكل'
+    'select_all'=>'تحديد الكل',
+    'choose_class'=>'اختر الفصل ...'
 ];

@@ -87,65 +87,36 @@
 
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#add_student">
-                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('Students_trans.add_student')}}</span></div>
+                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('Students_trans.Students')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="add_student" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('Students.create')}}">{{trans('Students_trans.add_student')}}</a></li>
-                            <li><a href="{{route('Students.index')}}">{{trans('Students_trans.add_student')}}</a></li>
+                            <li><a href="{{route('Students.index')}}">{{trans('Students_trans.list_st')}}</a></li>
                             <li><a href="{{route('Promotion.index')}}">{{trans('Students_trans.Promotions')}}</a></li>
+                            <li><a href="{{route('Promotion.create')}}">{{trans('Students_trans.managements_promo')}}</a></li>
 
                         </ul>
                     </li>
 
-
-
-
-
-
-
-
-                    <!-- menu font icon-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">font
-                                    icon</span></div>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#add_student1">
+                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('main_side.Graduate_students')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="font-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                        <ul id="add_student1" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('Graduate.create')}}">{{trans('main_side.add_Graduate')}}</a></li>
+                            <li><a href="{{route('Graduate.index')}}">{{trans('main_side.list_Graduate')}}</a></li>
+                            <li><a href="{{route('Promotion.index')}}">{{trans('Students_trans.Promotions')}}</a></li>
+                            <li><a href="{{route('Promotion.create')}}">{{trans('Students_trans.managements_promo')}}</a></li>
+
                         </ul>
                     </li>
-                    <!-- menu title -->
-                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Widgets, Forms & Tables </li>
-                    <!-- menu item Widgets-->
-                    <li>
-                        <a href="widgets.html"><i class="ti-blackboard"></i><span class="right-nav-text">Widgets</span>
-                            <span class="badge badge-pill badge-danger float-right mt-1">59</span> </a>
-                    </li>
-                    <!-- menu item Form-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Form">
-                            <div class="pull-left"><i class="ti-files"></i><span class="right-nav-text">Form &
-                                    Editor</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Form" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="editor.html">Editor</a> </li>
-                            <li> <a href="editor-markdown.html">Editor Markdown</a> </li>
-                            <li> <a href="form-input.html">Form input</a> </li>
-                            <li> <a href="form-validation-jquery.html">form validation jquery</a> </li>
-                            <li> <a href="form-wizard.html">form wizard</a> </li>
-                            <li> <a href="form-repeater.html">form repeater</a> </li>
-                            <li> <a href="input-group.html">input group</a> </li>
-                            <li> <a href="toastr.html">toastr</a> </li>
-                        </ul>
-                    </li>
+
+
+
                     <!-- menu item table -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#table">

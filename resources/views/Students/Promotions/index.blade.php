@@ -20,7 +20,7 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
 
-                    @if (Session::has('error_promotions'))
+                    <!-- @if (Session::has('error_promotions'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>{{Session::get('error_promotions')}}</strong>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -28,6 +28,16 @@
                             </button>
                         </div>
                     @endif
+                     -->
+                    @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
                         <h6 style="color: red;font-family: Cairo">المرحلة الدراسية القديمة</h6><br>
 

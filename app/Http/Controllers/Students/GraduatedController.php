@@ -2,31 +2,28 @@
 
 namespace App\Http\Controllers\Students;
 
-use App\Repository\StudentPromotionInterface;
 use App\Http\Controllers\Controller;
-use App\Models\Promotion;
 use Illuminate\Http\Request;
+use App\Repository\GraduatedInterfaces;
 
-
-use App\Http\Requests\promotion as promotionValidate;
-
-class PromotionController extends Controller
+class GraduatedController extends Controller
 {
-
-    public $promotion;
-
-    public function __construct(StudentPromotionInterface $stPromotion)
-    {
-      $this->promotion=$stPromotion;
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+     public $Graduated;
+
+     public function __construct(GraduatedInterfaces $Graduate)
+     {
+           $this->Graduated=$Graduate;
+     }
+
     public function index()
     {
-         return  $this->promotion->index();
+
+      return $this->Graduated->index();
     }
 
     /**
@@ -36,7 +33,7 @@ class PromotionController extends Controller
      */
     public function create()
     {
-       return $this->promotion->create();
+        return $this->Graduated->create();
     }
 
     /**
@@ -45,18 +42,18 @@ class PromotionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(promotionValidate $request)
+    public function store(Request $request)
     {
-        return $this->promotion->store($request);
+        return $this->Graduated->SoftDelete($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Promotion  $promotion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Promotion $promotion)
+    public function show($id)
     {
         //
     }
@@ -64,10 +61,10 @@ class PromotionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Promotion  $promotion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Promotion $promotion)
+    public function edit($id)
     {
         //
     }
@@ -76,22 +73,23 @@ class PromotionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Promotion  $promotion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Promotion $promotion)
+    public function update(Request $request)
     {
-        //
+       return $this->Graduated->update($request);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Promotion  $promotion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
-         return $this->promotion->destroy($request);
+
+       return $this->Graduated->destroy($request);
     }
 }

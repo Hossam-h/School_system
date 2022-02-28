@@ -32,7 +32,10 @@ return [
     'Download' => 'تحميل',
     'delete' => 'حذف',
     'add_student'=>'اضافة طالب ',
-    'Promotions'=>'ترقيات'
+    'Promotions'=>'ترقيات',
+    'managements_promo'=>'ادارة ترقيات الطلاب',
+    'Students'=>'الطلاب',
+    'list_st'=>'قائمة الطلاب'
 
 
 

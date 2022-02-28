@@ -23,7 +23,8 @@ return [
     'Delete'=>'Delete',
     'delete_Class_Error'=>'The Class cannot be Deleted because it contains Sections',
     'Close' => 'Close',
-    'select_all'=>'Select all '
+    'select_all'=>'Select all ',
+    'choose_class'=>'Choose class ....'
 
 
 

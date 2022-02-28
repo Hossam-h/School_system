@@ -13,6 +13,7 @@ return [
     'blood_type' => 'blood_type',
     'Date_of_Birth' => 'Date_of_Birth',
     'Student_information' => 'Student information',
+    'Students'=>'Students',
     'Grade' => 'Grade',
     'classrooms' => 'classrooms',
     'section' => 'section',
@@ -32,6 +33,8 @@ return [
     'Download' => 'Download',
     'delete' => 'Delete',
     'add_student'=>'Add student ',
-    'Promotions'=>'Promotions'
+    'Promotions'=>'Promotions',
+    'managements_promo'=>'Mangment promotions',
+    'list_st'=>'List of students'
 
 ];

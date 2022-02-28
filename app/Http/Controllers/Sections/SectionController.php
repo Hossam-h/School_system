@@ -54,7 +54,7 @@ class SectionController extends Controller
             $validated = $request->validated();
             $Sections = new Section();
 
-            $Sections->Name_section = ['en' => $request->Name_Section_Ar, 'ar' => $request->Name_Section_En];
+            $Sections->Name_section = ['en' => $request->Name_Section_En, 'ar' => $request->Name_Section_Ar];
 
             $Sections-> grade_id = $request->Grade_id;
             $Sections-> classroom_id = $request->Class_id;
@@ -105,7 +105,7 @@ class SectionController extends Controller
 
         try {
 
-            
+
             $validated = $request->validated();
             $section_update = Section::find($request->id);
 
