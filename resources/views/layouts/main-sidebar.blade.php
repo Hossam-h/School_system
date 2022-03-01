@@ -101,16 +101,27 @@
                     </li>
 
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#add_student1">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#graduated">
                             <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('main_side.Graduate_students')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="add_student1" class="collapse" data-parent="#sidebarnav">
+                        <ul id="graduated" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('Graduate.create')}}">{{trans('main_side.add_Graduate')}}</a></li>
                             <li><a href="{{route('Graduate.index')}}">{{trans('main_side.list_Graduate')}}</a></li>
-                            <li><a href="{{route('Promotion.index')}}">{{trans('Students_trans.Promotions')}}</a></li>
-                            <li><a href="{{route('Promotion.create')}}">{{trans('Students_trans.managements_promo')}}</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Fees">
+                            <div class="pull-left"><i class="fa fa-building"></i><span class="right-nav-text">{{trans('main_side.Accounts')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Fees" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('Fees.create')}}">{{trans('main_side.add_Graduate')}}</a></li>
+                            <li><a href="{{route('Fees.index')}}">{{trans('main_side.list_Graduate')}}</a></li>
 
                         </ul>
                     </li>

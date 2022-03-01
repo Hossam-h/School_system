@@ -84,7 +84,7 @@ Route::group([
     Route::group(['namespace' => 'Students'], function () {
         Route::resource('Students', 'StudentController');
         Route::resource('Promotion', 'PromotionController');
-       // Route::resource('Graduate', 'Graduated');
+
        Route::resource('Graduate', 'GraduatedController');
         Route::get('Get_classerooms/{id}', 'StudentController@Get_classerooms');
         Route::get('Get_section/{id}', 'StudentController@Get_section');
@@ -96,8 +96,13 @@ Route::group([
 
     });
 
+    //========================= fees =============================
 
-       //========================dashboard======================
+    Route::group(['namespace' => 'Fees'],function () {
+        Route::resource('Fees','FeeController');
+    });
+
+    //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 

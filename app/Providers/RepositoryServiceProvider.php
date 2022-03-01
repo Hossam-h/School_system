@@ -34,7 +34,10 @@ class RepositoryServiceProvider extends ServiceProvider
         'App\Repository\GraduatedInterfaces',
         'App\Repository\GraduatedRepo'
     );
-
+       $this->app->bind(
+        'App\Repository\FeesInterface',
+        'App\Repository\FeesRepo'
+       );
     }
 
     /**
