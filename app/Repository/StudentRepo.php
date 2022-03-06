@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 //use PHPUnit\Framework\MockObject\Builder\Stub;
+use App\Models\FeeInvoice;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Http\Requests\student as studentValidtae;
@@ -190,8 +191,12 @@ class StudentRepo implements StudentRepoInterface
     {
 
         $Student = Student::find($id);
+        $Fee_invoices = FeeInvoice::all();
+        $Grades = Grade::all();
+       // return view('Fees_Invoices.index',compact('Fee_invoices','Grades','Fee_invoices','Grades'));
 
-        return view('Students.show', compact('Student'));
+
+        return view('Students.show', compact('Student','Fee_invoices','Grades'));
     }
 
     public function download_attchment($id, $namefile)

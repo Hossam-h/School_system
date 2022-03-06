@@ -46,11 +46,6 @@ class Student extends Model
     }
 
 
-    // // علاقة بين الطلاب والصور لجلب اسم الصور  في جدول الطلاب
-    // public function images()
-    // {
-    //     return $this->morphMany('App\Models\Image', 'imageable');
-    // }
 
     // علاقة بين الطلاب والجنسيات  لجلب اسم الجنسية  في جدول الجنسيات
 
@@ -72,6 +67,8 @@ class Student extends Model
     {
         return $this->belongsTo('App\Models\Blood','blood_id');
     }
+
+    // علاقة بين الطلاب والصور لجلب اسم الصور  في جدول الطلاب
 
     public function images (){
           return $this->morphMany('App\Models\Image','imageable');

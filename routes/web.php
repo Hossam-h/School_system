@@ -82,17 +82,22 @@ Route::group([
 
      //=====================Student=============================
     Route::group(['namespace' => 'Students'], function () {
+
         Route::resource('Students', 'StudentController');
         Route::resource('Promotion', 'PromotionController');
 
-       Route::resource('Graduate', 'GraduatedController');
+         // feeinvoice
+        Route::resource('Feeinvo', 'FeeInvoiceController');
+         // StAcount
+        Route::resource('StAcount', 'StudentAcounteController');
+
+        Route::resource('Graduate', 'GraduatedController');
         Route::get('Get_classerooms/{id}', 'StudentController@Get_classerooms');
         Route::get('Get_section/{id}', 'StudentController@Get_section');
         Route::get('download_attchment/{id}/{namefile}', 'StudentController@download_attchment');
         Route::get('show_Attach/{id}/{namefile}', 'StudentController@show_Attach');
         Route::delete('del_attchment/{id}/{namefile}', 'StudentController@del_attchment');
         Route::post ('upload_attachment','StudentController@upload_attachment');
-
 
     });
 

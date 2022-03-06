@@ -26,7 +26,14 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-02-tab" data-toggle="tab" href="#profile-02" role="tab" aria-controls="profile-02" aria-selected="false">{{trans('Students_trans.Attachments')}}</a>
+
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="fee-invoice-02-tab" data-toggle="tab" href="#fee-invoice-02" role="tab" aria-controls="fee-invoice-02" aria-selected="false">رسوم</a>
+
+                            </li>
+
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="home-02" role="tabpanel" aria-labelledby="home-02-tab">
@@ -152,6 +159,53 @@
                                     </table>
                                 </div>
                             </div>
+                            <!----------------------------------------------------------------------------------------------->
+
+                            <div class="tab-pane fade" id="fee-invoice-02" role="tabpanel" aria-labelledby="fee-invoice-02-tab">
+                                <div class="card card-statistics">
+                                    <div class="card-body">
+
+                                    <div class="table-responsive">
+                                    <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
+                                           data-page-length="50"
+                                           style="text-align: center">
+                                        <thead>
+                                        <tr class="alert-success">
+                                            <th>#</th>
+                                            <th>الاسم</th>
+                                            <th>نوع الرسوم</th>
+                                            <th>المبلغ</th>
+                                            <th>المرحلة الدراسية</th>
+                                            <th>الصف الدراسي</th>
+                                            <th>البيان</th>
+                                            <th>العمليات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($Fee_invoices as $Fee_invoice)
+                                            <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{$Fee_invoice->student->name}}</td>
+                                            <td>{{$Fee_invoice->fees->tittle}}</td>
+                                            <td>{{ number_format($Fee_invoice->amount, 2) }}</td>
+                                            <td>{{$Fee_invoice->grade->Name}}</td>
+                                            <td>{{$Fee_invoice->classroom->name}}</td>
+                                            <td>{{$Fee_invoice->description}}</td>
+                                                <td>
+                                                    <a href="{{route('Feeinvo.edit',$Fee_invoice->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                        @include('Fees_Invoices.Delete')
+                                        @endforeach
+                                    </table>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----------------------------------------------------------------------------------------->
+
+
                         </div>
                     </div>
                 </div>

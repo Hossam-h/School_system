@@ -1,31 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Fees;
+namespace App\Http\Controllers\Students;
+
 
 use App\Http\Controllers\Controller;
-
-use App\Models\Fee;
-use App\Repository\FeesInterface;
+use App\Models\StudentAcounte;
 use Illuminate\Http\Request;
-use App\Http\Requests\feeValidate;
+use App\Repository\StudentAcountInterface;
 
-class FeeController extends Controller
+class StudentAcounteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+
      */
 
-     protected $Fees;
+    protected $StAc;
 
-     public function __construct(FeesInterface $fee)
-     {
-       $this->Fees=$fee;
-     }
-     public function index()
+    public function __construct(StudentAcountInterface $stAcount)
     {
-return $this->Fees->index();
+     $this->StAc= $stAcount;
+    }
+
+    public function index()
+    {
+        $this->StAc->index();
     }
 
     /**
@@ -35,7 +37,7 @@ return $this->Fees->index();
      */
     public function create()
     {
-        return  $this->Fees->create();
+        //
     }
 
     /**
@@ -44,18 +46,18 @@ return $this->Fees->index();
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(feeValidate $request)
+    public function store(Request $request)
     {
-        return  $this->Fees->store( $request);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Fee  $fee
+     * @param  \App\Models\StudentAcounte  $studentAcounte
      * @return \Illuminate\Http\Response
      */
-    public function show(Fee $fee)
+    public function show(StudentAcounte $studentAcounte)
     {
         //
     }
@@ -63,35 +65,34 @@ return $this->Fees->index();
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Fee  $fee
+     * @param  \App\Models\StudentAcounte  $studentAcounte
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(StudentAcounte $studentAcounte)
     {
-        return $this->Fees->edit($id);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Fee  $fee
+     * @param  \App\Models\StudentAcounte  $studentAcounte
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, StudentAcounte $studentAcounte)
     {
-
-     return $this->Fees->update($request);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Fee  $fee
+     * @param  \App\Models\StudentAcounte  $studentAcounte
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(StudentAcounte $studentAcounte)
     {
-        return $this->Fees->destroy($request);
+        //
     }
 }

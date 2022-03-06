@@ -3,6 +3,7 @@ namespace App\Repository;
 use App\Models\Grade;
 use App\Models\Fee;
 use Exception;
+use App\Http\Requests\feeValidate;
 
 class FeesRepo implements FeesInterface{
     public function index(){
@@ -23,7 +24,7 @@ class FeesRepo implements FeesInterface{
 
 
         try{
-
+            $validated = $request->validated();
             $fees = new Fee();
             $fees->tittle = ['en' => $request->title_en, 'ar' => $request->title_ar];
             $fees->amount  =$request->amount;
@@ -54,6 +55,7 @@ class FeesRepo implements FeesInterface{
     public function update($request){
 
         try {
+
             $fees = Fee::findorfail($request->id);
             $fees->tittle = ['en' => $request->title_en, 'ar' => $request->title_ar];
             $fees->amount  =$request->amount;
