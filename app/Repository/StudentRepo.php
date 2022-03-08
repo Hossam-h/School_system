@@ -192,11 +192,7 @@ class StudentRepo implements StudentRepoInterface
 
         $Student = Student::find($id);
         $Fee_invoices = FeeInvoice::all();
-        $Grades = Grade::all();
-       // return view('Fees_Invoices.index',compact('Fee_invoices','Grades','Fee_invoices','Grades'));
-
-
-        return view('Students.show', compact('Student','Fee_invoices','Grades'));
+        return view('Students.show', compact('Student','Fee_invoices'));
     }
 
     public function download_attchment($id, $namefile)

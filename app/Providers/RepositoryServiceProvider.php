@@ -15,15 +15,16 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(
+    $this->app->bind(
           'App\Repository\TeacherRepositoryInterface',
          'App\Repository\TeacherRepository',
 
-        );
-        $this->app->bind(
+    );
+
+    $this->app->bind(
         'App\Repository\StudentRepoInterface',
         'App\Repository\StudentRepo'
-      );
+    );
 
     $this->app->bind(
         'App\Repository\StudentPromotionInterface',
@@ -37,19 +38,33 @@ class RepositoryServiceProvider extends ServiceProvider
        $this->app->bind(
         'App\Repository\FeesInterface',
         'App\Repository\FeesRepo'
-       );
+    );
 
 
        $this->app->bind(
         'App\Repository\FeeInvoiceInterface',
         'App\Repository\FeeInvoiceRepo'
-       );
+    );
 
-       
-       $this->app->bind(
+
+    $this->app->bind(
         'App\Repository\StudentAcountInterface',
         'App\Repository\StudentAcountrepo'
+    );
+
+       $this->app->bind(
+        'App\Repository\FundInterface',
+        'App\Repository\FundRepo'
+
        );
+
+       $this->app->bind(
+        'App\Repository\RecieptInterface',
+        'App\Repository\RecieptRepo'
+
+       );
+
+
 
     }
 

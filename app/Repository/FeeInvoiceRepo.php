@@ -12,8 +12,8 @@ class FeeInvoiceRepo implements FeeInvoiceInterface{
     public function index(){
 
         $Fee_invoices = FeeInvoice::all();
-        $Grades = Grade::all();
-        return view('Fees_Invoices.index',compact('Fee_invoices','Grades'));
+        // $Grades = Grade::all();
+        return view('Fees_Invoices.index',compact('Fee_invoices'));
 
     }
     public function store($request){

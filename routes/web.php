@@ -86,6 +86,8 @@ Route::group([
         Route::resource('Students', 'StudentController');
         Route::resource('Promotion', 'PromotionController');
 
+         //
+        Route::resource('Reciept', 'ReceiptStudentController');
          // feeinvoice
         Route::resource('Feeinvo', 'FeeInvoiceController');
          // StAcount
@@ -107,6 +109,11 @@ Route::group([
         Route::resource('Fees','FeeController');
     });
 
+    //========================= Fund =============================
+        Route::group(['namespace' => 'Fund'], function() {
+
+             Route::resource('fundacounts','FundAccountController');
+        });
     //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
