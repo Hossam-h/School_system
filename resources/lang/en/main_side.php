@@ -31,7 +31,12 @@ return[
     'Settings'=>'Settings',
     'Users'=>'Users',
     'Copyright' => 'Copyright',
-    'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved'
+    'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved',
+    'Add_fees'=>'Add fees',
+    'list_fees'=>'List of fees',
+
+    'Reciept'=>'Reciept'
+
 
 
 ];

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
+use App\Models\FundAccount;
 use App\Models\ReceiptStudent;
+use App\Models\StudentAcounte;
 use App\Repository\RecieptInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\RecieptValidate;
+
+use function PHPUnit\Framework\returnSelf;
 
 class ReceiptStudentController extends Controller
 {
@@ -23,7 +28,7 @@ class ReceiptStudentController extends Controller
      }
     public function index()
     {
-        $this->rsreceiptStudent->index();
+       return $this->rsreceiptStudent->index();
     }
 
     /**
@@ -42,9 +47,9 @@ class ReceiptStudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RecieptValidate $request)
     {
-        //
+        return $this->rsreceiptStudent->store($request);
     }
 
     /**
@@ -53,9 +58,9 @@ class ReceiptStudentController extends Controller
      * @param  \App\ReceiptStudent  $receiptStudent
      * @return \Illuminate\Http\Response
      */
-    public function show(ReceiptStudent $receiptStudent)
+    public function show($id)
     {
-        //
+        return $this->rsreceiptStudent->show($id);
     }
 
     /**
@@ -64,9 +69,9 @@ class ReceiptStudentController extends Controller
      * @param  \App\ReceiptStudent  $receiptStudent
      * @return \Illuminate\Http\Response
      */
-    public function edit(ReceiptStudent $receiptStudent)
+    public function edit($id)
     {
-        //
+         return $this->rsreceiptStudent->edit($id);
     }
 
     /**
@@ -76,10 +81,14 @@ class ReceiptStudentController extends Controller
      * @param  \App\ReceiptStudent  $receiptStudent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ReceiptStudent $receiptStudent)
+    public function update(RecieptValidate $request)
     {
-        //
+
+      return $this->rsreceiptStudent->update($request);
+
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -87,8 +96,8 @@ class ReceiptStudentController extends Controller
      * @param  \App\ReceiptStudent  $receiptStudent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ReceiptStudent $receiptStudent)
+    public function destroy(Request $request)
     {
-        //
+          return  $this->rsreceiptStudent->delete($request);
     }
 }

@@ -120,8 +120,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Fees" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('Fees.create')}}">{{trans('main_side.add_Graduate')}}</a></li>
-                            <li><a href="{{route('Fees.index')}}">{{trans('main_side.list_Graduate')}}</a></li>
+                            <li><a href="{{route('Fees.create')}}">{{trans('main_side.Add_fees')}}</a></li>
+                            <li><a href="{{route('Fees.index')}}">{{trans('main_side.list_fees')}}</a></li>
+                            <li><a href="{{route('Reciept.index')}}">{{trans('main_side.Reciept')}}</a></li>
 
                         </ul>
                     </li>

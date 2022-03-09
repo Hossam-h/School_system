@@ -42,11 +42,11 @@
                                             <td>{{ number_format($receipt_student->Debit, 2) }}</td>
                                             <td>{{$receipt_student->description}}</td>
                                                 <td>
-                                                    <a href="{{route('receipt_students.edit',$receipt_student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('Reciept.edit',$receipt_student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$receipt_student->id}}" ><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
-                                        @include('pages.Receipt.Delete')
+                                        @include('Receipt.Delete')
                                         @endforeach
                                     </table>
                                 </div>

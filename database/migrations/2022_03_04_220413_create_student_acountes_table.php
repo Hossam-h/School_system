@@ -18,10 +18,10 @@ class CreateStudentAcountesTable extends Migration
             $table->date('date');
             $table->string('type');
             $table->foreignId('receipt_id')->nullable()->references('id')->on('receipt_students')->onDelete('cascade');
-            $table->foreignId('Fee_invoice_id')->references('id')->on('fee_invoices')->onDelete('cascade');
+            $table->foreignId('Fee_invoice_id')->nullable()->references('id')->on('fee_invoices')->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreignId('Grade_id')->references('id')->on('Grades')->onDelete('cascade');
-            $table->foreignId('Classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
+            $table->foreignId('Grade_id')->nullable()->references('id')->on('Grades')->onDelete('cascade');
+            $table->foreignId('Classroom_id')->nullable()->references('id')->on('classrooms')->onDelete('cascade');
             $table->decimal('Debit',8,2)->nullable();
             $table->decimal('credit',8,2)->nullable();
             $table->string('description')->nullable();
