@@ -34,8 +34,9 @@ return[
     'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved',
     'Add_fees'=>'Add fees',
     'list_fees'=>'List of fees',
+    'Reciept'=>'Reciept',
+    'ProcessingFess'=>'Processing Fess'
 
-    'Reciept'=>'Reciept'
 
 
 

@@ -65,6 +65,12 @@ class RepositoryServiceProvider extends ServiceProvider
        );
 
 
+       $this->app->bind(
+        'App\Repository\Processing_feesInterface',
+        'App\Repository\Processing_feesRepo'
+
+       );
+
 
     }
 

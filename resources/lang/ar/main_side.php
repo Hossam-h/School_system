@@ -39,7 +39,8 @@ return [
     'Name_Programer' => 'سمير جمال مورا سوفت',
     'Add_fees'=>'اضافة الرسوم',
     'list_fees'=>'قائمة الرسوم',
-    'Reciept'=>'سندات القبض'
+    'Reciept'=>'سندات القبض',
+    'ProcessingFess'=>'استبعاد رسوم'
 
 
 ];
