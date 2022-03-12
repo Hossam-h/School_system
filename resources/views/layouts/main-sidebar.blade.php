@@ -124,6 +124,7 @@
                             <li><a href="{{route('Fees.index')}}">{{trans('main_side.list_fees')}}</a></li>
                             <li><a href="{{route('Reciept.index')}}">{{trans('main_side.Reciept')}}</a></li>
                             <li><a href="{{route('ProcessingFess.index')}}">{{trans('main_side.ProcessingFess')}}</a></li>
+                            <li><a href="{{route('Payment_students.index')}}">سندات الصرف</a></li>
 
                         </ul>
                     </li>

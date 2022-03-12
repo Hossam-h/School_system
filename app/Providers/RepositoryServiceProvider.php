@@ -70,6 +70,12 @@ class RepositoryServiceProvider extends ServiceProvider
         'App\Repository\Processing_feesRepo'
 
        );
+       $this->app->bind(
+
+        'App\Repository\student_paymentInterface',
+        'App\Repository\student_paymentRepo'
+
+       );
 
 
     }

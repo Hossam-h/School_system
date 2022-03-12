@@ -26,7 +26,7 @@ use \App\Http\Controllers\Controller\Grades;
 
 
 // routes/web.php
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 
 
@@ -85,6 +85,9 @@ Route::group([
 
         Route::resource('Students', 'StudentController');
         Route::resource('Promotion', 'PromotionController');
+
+        // studentpayment
+         Route::resource('Payment_students', 'PaymentStudentController');
 
          //ProcessingFees;
          Route::resource('ProcessingFess', 'ProcessingFeesController');
