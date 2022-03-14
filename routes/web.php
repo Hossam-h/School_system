@@ -86,6 +86,10 @@ Route::group([
         Route::resource('Students', 'StudentController');
         Route::resource('Promotion', 'PromotionController');
 
+        // studentAttend
+        Route::resource('studentAttend', 'StudentAttendeController');
+
+
         // studentpayment
          Route::resource('Payment_students', 'PaymentStudentController');
 

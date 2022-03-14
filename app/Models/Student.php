@@ -79,5 +79,9 @@ class Student extends Model
         return $this->hasMany('App\Models\StudentAcounte', 'student_id');
     }
 
+    public function attendes(){
+
+        return $this->hasMany('App\Models\StudentAttende', 'student_id');
+    }
 
 }

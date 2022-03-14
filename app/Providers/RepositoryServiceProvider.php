@@ -77,6 +77,13 @@ class RepositoryServiceProvider extends ServiceProvider
 
        );
 
+       $this->app->bind(
+
+        'App\Repository\AttendanceRepositoryInterface',
+        'App\Repository\AttendanceRepository'
+
+       );
+
 
     }
 
