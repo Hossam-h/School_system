@@ -7,7 +7,8 @@ return[
     'Attention_promotion'=>'لقد اخترت نفس المرحلة و نفس الصف',
     'done_promotion'=>'تمت الترقية بنجاح',
     'st_exist'=>'هذه المرحلة لا يوجد فيها طلاب',
-    'return_pormotion'=>'تم حذف الترقية'
+    'return_pormotion'=>'تم حذف الترقية',
+    'Attend'=>'حقل الحضور فارغ'
 
 ]
 

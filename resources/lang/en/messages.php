@@ -7,7 +7,9 @@ return[
     'Attention_promotion'=>'you have choosed the same grade and the same class',
     'done_promotion'=>'Promotion is done',
     'st_exist'=>'Not student exist in this stage and this class',
-    'return_pormotion'=>'Promotion is deleted'
+    'return_pormotion'=>'Promotion is deleted',
+    'Attend'=>'the Attendes is empty'
+
 
 
 ]

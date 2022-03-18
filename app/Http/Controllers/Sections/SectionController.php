@@ -158,7 +158,7 @@ return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
     public function getclasses($id)
     {
-        $getClasses = Classroom::where('grade_id', $id)->pluck('name', 'id');
+        $getClasses = Classroom::where('grade_id', $id)->pluck('name','id');
 
         return json_encode($getClasses);
     }

@@ -29,6 +29,7 @@ class AttendanceRepository implements AttendanceRepositoryInterface
     public function store($request)
     {
         try {
+         if($request->attendences){
 
             foreach ($request->attendences as $studentid => $attendence) {
 
@@ -47,11 +48,16 @@ class AttendanceRepository implements AttendanceRepositoryInterface
                     'attendence_date'=> date('Y-m-d'),
                     'attendence_status'=> $attendence_status
                 ]);
-
             }
 
             toastr()->success(trans('messages.sucess'));
             return redirect()->back();
+
+        }else{
+            toastr()->error(trans('messages.Attend'));
+            return redirect()->back();
+
+         }
 
         }
 

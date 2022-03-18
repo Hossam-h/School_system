@@ -86,13 +86,13 @@
 
                             <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
                                 <input name="attendences[{{ $student->id }}]" class="leading-tight" type="radio"
-                                       value="presence">
+                                       value="presence" required>
                                 <span class="text-success">حضور</span>
                             </label>
 
                             <label class="ml-4 block text-gray-500 font-semibold">
                                 <input name="attendences[{{ $student->id }}]" class="leading-tight" type="radio"
-                                       value="absent">
+                                       value="absent" required>
                                 <span class="text-danger">غياب</span>
                             </label>
 

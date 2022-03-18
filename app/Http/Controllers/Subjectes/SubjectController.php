@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Students;
+namespace App\Http\Controllers\Subjectes;
 
 use App\Http\Controllers\Controller;
-use App\Models\StudentAttende;
-use App\Models\Student;
-use App\Models\Grade;
-use App\Models\Teacher;
+use App\Repository\SubjectRepositoryInterface;
+use App\Models\Subject;
 use Illuminate\Http\Request;
-use App\Repository\AttendanceRepositoryInterface;
-use App\Http\Requests\AttendesValidate;
 
-class StudentAttendeController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +15,16 @@ class StudentAttendeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     protected $Attendes;
 
-     public function __construct(AttendanceRepositoryInterface $AttendesStudent)
+     protected $subjects;
+
+     public function __construct(SubjectRepositoryInterface $subject)
      {
-
-        $this->Attendes=$AttendesStudent;
-
+     return $this->subjects=$subject;
      }
     public function index()
     {
-
-      return $this->Attendes->index();
-
+        return $this->subjects->index();
     }
 
     /**
@@ -41,10 +34,8 @@ class StudentAttendeController extends Controller
      */
     public function create()
     {
-        //
+        return $this->subjects->create();
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -54,52 +45,51 @@ class StudentAttendeController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->Attendes->store($request);
-
+       return $this->subjects->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\StudentAttende  $studentAttende
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject)
     {
-        return $this->Attendes->show($id);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\StudentAttende  $studentAttende
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(StudentAttende $studentAttende)
+    public function edit($id)
     {
-        //
+        return $this->subjects->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\StudentAttende  $studentAttende
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StudentAttende $studentAttende)
+    public function update(Request $request)
     {
-        //
+        return $this->subjects->update($request);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\StudentAttende  $studentAttende
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudentAttende $studentAttende)
+    public function destroy(Request $request)
     {
-        //
+      return $this->subjects->destroy($request);
     }
 }
