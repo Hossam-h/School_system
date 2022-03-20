@@ -123,10 +123,15 @@ Route::group([
           Route::resource('fundacounts','FundAccountController');
         });
 
-         //========================= Fund =============================
+         //========================= Subject =============================
          Route::group(['namespace' => 'Subjectes'], function() {
             Route::resource('subjects','SubjectController');
           });
+
+            //========================= Exam =============================
+            Route::group(['namespace'=>'Exames'],function(){
+                Route::resource('Exams','ExamController');
+            });
 
     //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
