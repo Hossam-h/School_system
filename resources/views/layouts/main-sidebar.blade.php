@@ -146,6 +146,34 @@
 
 
                     <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exam">
+                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span class="right-nav-text">الامتحنات
+                                    </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Exam" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('Exams.index')}}">قائمة الامتحانات</a> </li>
+                            <li> <a href="{{route('Exams.create')}}">اضافة امتحان</a> </li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Quizzes">
+                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span class="right-nav-text">الاختبارات
+                                    </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Quizzes" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('Quizzes.index')}}">الاختبارات</a> </li>
+
+                        </ul>
+                    </li>
+
+
+                    <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#authentication">
                             <div class="pull-left"><i class="ti-id-badge"></i><span class="right-nav-text">Authentication</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>

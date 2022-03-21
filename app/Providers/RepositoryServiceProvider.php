@@ -98,6 +98,12 @@ class RepositoryServiceProvider extends ServiceProvider
 
        );
 
+       $this->app->bind(
+
+        'App\Repository\QuizzRepositoryInterface',
+        'App\Repository\QuizzRepository'
+
+       );
 
     }
 

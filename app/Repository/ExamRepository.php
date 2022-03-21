@@ -21,6 +21,9 @@ class ExamRepository implements ExamRepositoryInterface{
    // dd($request->all());
 
         try {
+
+            $validated=$request->validated();
+
             $exams = new Exam();
             $exams->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
             $exams->term = $request->term;
@@ -42,6 +45,9 @@ class ExamRepository implements ExamRepositoryInterface{
 
     public function update($request){
         try {
+            
+            $validated=$request->validated();
+
             $exam = Exam::findorFail($request->id);
             $exam->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
             $exam->term = $request->term;

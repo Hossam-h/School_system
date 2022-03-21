@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Exames;
-
+namespace App\Http\Controllers\Quizzes;
 
 use App\Http\Controllers\Controller;
-use App\Models\Exam;
-use App\Repository\ExamRepositoryInterface;
-use Illuminate\Http\Request;
-use App\Http\Requests\ExamValidate;
 
-class ExamController extends Controller
+use App\Models\Quizze;
+use Illuminate\Http\Request;
+use App\Repository\QuizzRepositoryInterface;
+use App\Http\Requests\QuizeValidate;
+class QuizzeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +16,16 @@ class ExamController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     protected $exam;
+     protected $quizes;
 
-     public function __construct(ExamRepositoryInterface $exames)
+     public function __construct(QuizzRepositoryInterface $quize)
      {
-          $this->exam=$exames;
+         $this->quizes=$quize;
+
      }
     public function index()
     {
-        return $this->exam->index();
+        return $this->quizes->index();
     }
 
     /**
@@ -35,7 +35,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        return $this->exam->create();
+        return $this->quizes->create();
     }
 
     /**
@@ -44,18 +44,18 @@ class ExamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ExamValidate $request)
+    public function store(QuizeValidate $request)
     {
-        return $this->exam->store($request);
+        return $this->quizes->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Quizze  $quizze
      * @return \Illuminate\Http\Response
      */
-    public function show(Exam $exam)
+    public function show(Quizze $quizze)
     {
         //
     }
@@ -63,35 +63,35 @@ class ExamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Quizze  $quizze
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
-        return $this->exam->edit($id);
+        return $this->quizes->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Quizze  $quizze
      * @return \Illuminate\Http\Response
      */
-    public function update(ExamValidate $request)
+    public function update(QuizeValidate $request)
     {
-      return   $this->exam->update($request);
+        return $this->quizes->update($request);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Exam  $exam
+     * @param  \App\Quizze  $quizze
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
-        return   $this->exam->destroy($request);
-
+         dd(1);
     }
 }

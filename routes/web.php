@@ -133,6 +133,11 @@ Route::group([
                 Route::resource('Exams','ExamController');
             });
 
+               //========================= Exam =============================
+               Route::group(['namespace'=>'Quizzes'],function(){
+                Route::resource('Quizzes','QuizzeController');
+            });
+
     //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
