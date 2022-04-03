@@ -168,6 +168,7 @@
                         </a>
                         <ul id="Quizzes" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('Quizzes.index')}}">الاختبارات</a> </li>
+                            <li> <a href="{{route('questions.index')}}">الاسئلة</a> </li>
 
                         </ul>
                     </li>

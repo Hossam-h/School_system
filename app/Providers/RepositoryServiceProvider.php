@@ -105,6 +105,14 @@ class RepositoryServiceProvider extends ServiceProvider
 
        );
 
+       $this->app->bind(
+
+        'App\Repository\QuestionRepositoryInterface',
+        'App\Repository\QuestionRepository'
+
+       );
+
+
     }
 
     /**

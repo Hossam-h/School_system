@@ -133,9 +133,14 @@ Route::group([
                 Route::resource('Exams','ExamController');
             });
 
-               //========================= Exam =============================
+               //========================= Quizzes =============================
                Route::group(['namespace'=>'Quizzes'],function(){
                 Route::resource('Quizzes','QuizzeController');
+            });
+
+              //========================= Question =============================
+              Route::group(['namespace'=>'Questiones'],function(){
+                Route::resource('questions','QuestionController');
             });
 
     //========================dashboard======================

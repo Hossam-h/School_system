@@ -67,7 +67,7 @@ class QuizzRepository implements QuizzRepositoryInterface
             $quizz->section_id = $request->section_id;
             $quizz->teacher_id = $request->teacher_id;
             $quizz->save();
-            toastr()->success(trans('messages.Update'));
+            toastr()->success(trans('messages.edit'));
             return redirect()->route('Quizzes.index');
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -75,6 +75,14 @@ class QuizzRepository implements QuizzRepositoryInterface
     }
 
     public function destroy($request){
+
+        try{
+             Quizze::destroy($request->id);
+            toastr()->error(trans('messages.delete'));
+            return redirect()->route('Quizzes.index');
+        }catch(Exception $e){
+          return \redirect()->back()->with(['error'=>$e->getMessage()]);
+        }
 
     }
 

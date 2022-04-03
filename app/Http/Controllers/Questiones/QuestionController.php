@@ -1,31 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\Quizzes;
+namespace App\Http\Controllers\Questiones;
+
 
 use App\Http\Controllers\Controller;
-
-use App\Models\Quizze;
+use App\Repository\QuestionRepositoryInterface;
+use App\Models\Question;
 use Illuminate\Http\Request;
-use App\Repository\QuizzRepositoryInterface;
-use App\Http\Requests\QuizeValidate;
-class QuizzeController extends Controller
+use Laravel\Ui\Presets\React;
+use App\Http\Requests\QuesValidate;
+use Illuminate\Support\Facades\Session;
+
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+      protected $questiones;
 
-     protected $quizes;
+    public function __construct(QuestionRepositoryInterface $question)
+    {
 
-     public function __construct(QuizzRepositoryInterface $quize)
-     {
-         $this->quizes=$quize;
+        $this->questiones=$question;
 
-     }
+    }
+
     public function index()
     {
-        return $this->quizes->index();
+        return $this->questiones->index();
+
     }
 
     /**
@@ -35,7 +40,7 @@ class QuizzeController extends Controller
      */
     public function create()
     {
-        return $this->quizes->create();
+        return $this->questiones->create();
     }
 
     /**
@@ -44,18 +49,18 @@ class QuizzeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(QuizeValidate $request)
+    public function store(QuesValidate $request)
     {
-        return $this->quizes->store($request);
+        return $this->questiones->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Quizze  $quizze
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Quizze $quizze)
+    public function show(Question $question)
     {
         //
     }
@@ -63,35 +68,43 @@ class QuizzeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Quizze  $quizze
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return $this->quizes->edit($id);
+
+
+        $product = array(1,2,3,4);
+        Session::push('cart', $product);
+
+
+
+
+
+        return $this->questiones->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Quizze  $quizze
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(QuizeValidate $request)
+    public function update(QuesValidate $request)
     {
-        return $this->quizes->update($request);
-
+        return $this->questiones->update($request);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Quizze  $quizze
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
-         return $this->quizes->destroy($request);
+        return $this->questiones->destroy($request);
     }
 }
