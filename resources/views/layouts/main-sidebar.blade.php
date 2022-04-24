@@ -173,6 +173,22 @@
                         </ul>
                     </li>
 
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#zoom">
+                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span class="right-nav-text">حصص اونلاين
+                                    </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="zoom" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('online_classes.index')}}">حصة اونلاين</a> </li>
+
+                        </ul>
+                    </li>
+
+
+                            <li> <a href="{{route('settinges.index')}}"> الاعدادات</a> </li>
+
 
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#authentication">

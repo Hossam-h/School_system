@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RelegionSeeder::class);
         $this->call(SpechializeSeeder::class);
         $this->call(GenderSeeder::class);
+        $this->call(SettingSchool::class);
     }
 }

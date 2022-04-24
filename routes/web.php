@@ -143,6 +143,18 @@ Route::group([
                 Route::resource('questions','QuestionController');
             });
 
+
+              //========================= OnlineClasses =============================
+              Route::group(['namespace'=>'OnlineClasses'],function(){
+                Route::resource('online_classes','OnlieClasseController');
+            });
+
+                  //========================= OnlineClasses =============================
+                  Route::group(['namespace'=>'setting'],function(){
+                    Route::resource('settinges','SettingSchoolController');
+                });
+
+
     //========================dashboard======================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 

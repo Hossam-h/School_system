@@ -44,8 +44,6 @@ $(document).ready(function() {
                         dataType: "json",
                         success: function(data) {
 
-                           // console.log(1);
-
                             $('select[name="Classroom_id"]').empty();
                             $('select[name="Classroom_id"]').append('<option selected disabled > {{trans("My_Classes_trans.choose_class")}} </option>');
 
