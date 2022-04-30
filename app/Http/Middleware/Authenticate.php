@@ -2,7 +2,10 @@
 
 namespace App\Http\Middleware;
 
+//use GuzzleHttp\Psr7\Request;
+
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Request;
 
 class Authenticate extends Middleware
 {
@@ -14,8 +17,21 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        if (!$request->expectsJson()) {
+
+            if (Request::is(app()->getLocale() . '/student/dashboard')) {
+                return route('selection');
+            }
+
+            if (Request::is(app()->getLocale() . '/teacher/dashboard')) {
+                return route('selection');
+            }
+
+            if (Request::is(app()->getLocale() . '/myparent/dashboard')) {
+                return route('selection');
+            }else{
+                return route('selection');
+            }
         }
     }
 }

@@ -26,16 +26,28 @@ use \App\Http\Controllers\Controller\Grades;
 
 
 // routes/web.php
-Auth::routes(['verify'=>true]);
+//Auth::routes(['verify'=>true]);
 
 
 
-Route::group(['middleware' => ['guest']], function () {
+// Route::group(['middleware' => ['guest']], function () {
 
-        Route::get('/', function () {
-            return view('auth.login');
-        });
-    });
+//         Route::get('/', function () {
+//             return view('auth.login');
+//         });
+//     });
+
+Route::get('/', 'HomeController@index')->name('selection');
+
+Route::group(['namespace'=>'Auth'],function(){
+
+Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
+
+
+Route::get('/login','LoginController@login')->name('login');
+
+});
+
 
 
 Route::group([
