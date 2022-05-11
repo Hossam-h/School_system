@@ -6,10 +6,11 @@ use App\Models\Blood;
 use App\Models\ParentAttachment;
 use App\Models\Nationalte;
 use App\Models\Relegion;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Myparent extends Model
+class Myparent extends Authenticatable
 {
 
     use HasTranslations;

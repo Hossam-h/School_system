@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+//use App\Http\AuthTrait\AuthTrait as AuthTraitAuthTrait;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Http\Traits\AuthTrait;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -19,7 +23,7 @@ class LoginController extends Controller
     |
     */
 
-     // use AuthenticatesUsers;
+     //use AuthenticatesUsers;
 
     // /**
     //  * Where to redirect users after login.
@@ -34,6 +38,7 @@ class LoginController extends Controller
     //  * @return void
     //  */
 
+    use AuthTrait;
 
     public function __construct()
     {
@@ -44,4 +49,28 @@ class LoginController extends Controller
 
         return view('auth.login',compact('type'));
     }
+
+    public function login(Request $request ){
+
+
+
+        if (Auth::guard($this->cheakGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+             return $this->redirect($request);
+
+         }
+    }
+
+
+    public function logout(Request $request,$type)
+    {
+        Auth::guard($type)->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
 }

@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Models\Spechialize;
 use App\Models\Gender;
 use App\Models\Section;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
 
     use HasTranslations;

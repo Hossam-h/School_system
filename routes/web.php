@@ -44,7 +44,8 @@ Route::group(['namespace'=>'Auth'],function(){
 Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
 
 
-Route::get('/login','LoginController@login')->name('login');
+Route::post('/login','LoginController@login')->name('login');
+Route::get('/logout/{type}','LoginController@logout')->name('logout');
 
 });
 
@@ -168,7 +169,8 @@ Route::group([
 
 
     //========================dashboard======================
-    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+         Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 
     Route::get('/allparent', function(){

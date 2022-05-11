@@ -51,7 +51,7 @@ return [
             'provider' => 'students',
         ],
 
-        'myparent' => [
+        'parent' => [
             'driver' => 'session',
             'provider' => 'myparents',
         ],
