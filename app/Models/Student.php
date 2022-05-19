@@ -23,7 +23,7 @@ class Student extends Authenticatable
 
     public function gender()
     {
-        return $this->belongsTo('App\Models\Gender');
+        return $this->belongsTo('App\Models\Gender','gender_id');
     }
 
     // علاقة بين الطلاب والمراحل الدراسية لجلب اسم المرحلة في جدول الطلاب

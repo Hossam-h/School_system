@@ -26,4 +26,8 @@ Route::group(
         return view('Students.dashboard');
     });
 
+    Route::get('/student/see/', function () {
+        return 'ok';
+    })->name('see.student');
+
 });

@@ -21,8 +21,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-
-
+       
         $Grades = Grade::with(['Sections'])->get();
         $list_Grades = Grade::all();
         $teachers = Teacher::all();
@@ -51,6 +50,7 @@ class SectionController extends Controller
 
 
         try {
+
             $validated = $request->validated();
             $Sections = new Section();
 
@@ -59,7 +59,8 @@ class SectionController extends Controller
             $Sections-> grade_id = $request->Grade_id;
             $Sections-> classroom_id = $request->Class_id;
             $Sections-> status = 1;
-           $Sections->save();
+            $Sections->save();
+
             $Sections->teachers()->syncWithoutDetaching($request->teacher_id);
 
             toastr()->success(trans('messages.sucess'));

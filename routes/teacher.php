@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,8 +24,25 @@ Route::group(
     ], function () {
 
     //==============================dashboard============================
-    Route::get('/teacher/dashboard', function () {
-        return view('Teachers.dashboard');
+    Route::get('/teacherDash', function () {
+
+       $ids= App\Models\Teacher::find(Auth::user()->id)->sections()->pluck('section_id');
+       $section_count= App\Models\Teacher::find(Auth::user()->id)->sections()->pluck('section_id')->count();
+
+       $st_count= App\Models\Student::whereIn('section_id',$ids)->count();
+
+
+        return view('Teachers.dashboard',compact('section_count','st_count'));
     });
+
+
+    Route::group(['namespace'=>'Teachers\dashboard'],function(){
+        Route::resource('students','StudentController');
+    });
+
+
+
+
+    
 
 });

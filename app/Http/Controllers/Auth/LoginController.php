@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Traits\AuthTrait;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -23,7 +24,7 @@ class LoginController extends Controller
     |
     */
 
-     //use AuthenticatesUsers;
+    // use AuthenticatesUsers;
 
     // /**
     //  * Where to redirect users after login.
@@ -53,6 +54,10 @@ class LoginController extends Controller
     public function login(Request $request ){
 
 
+        $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string',
+        ]);
 
         if (Auth::guard($this->cheakGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
 

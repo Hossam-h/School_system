@@ -275,7 +275,7 @@
                                     </div>
                                     <br>
 
-                                
+
 
                                     <div class="col">
                                         <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>
@@ -283,6 +283,24 @@
 
                                         </select>
                                     </div><br>
+
+
+                                    <div class="col">
+                                        <label for="inputName" class="control-label"> المعلم</label>
+
+                                        <select name="teacher_id" class="custom-select">
+
+                                            <!--placeholder-->
+                                            <option value="" selected disabled>{{ trans('Sections_trans.Select_Grade') }}
+                                            </option>
+
+                                            @foreach ($teachers as $teacher)
+                                            <option value="{{ $teacher->id }}"> {{ $teacher->Name }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <br>
 
 
 

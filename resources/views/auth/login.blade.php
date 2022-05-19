@@ -72,7 +72,7 @@ login-->
                                 <label class="mb-10" for="name">البريدالالكتروني*</label>
                                 <input id="email" type="email"
                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                       value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                       value="{{ old('email') }}"  autocomplete="email" autofocus>
                                 <input type="hidden" value="{{$type}}" name="type">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
