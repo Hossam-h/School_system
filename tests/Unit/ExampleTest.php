@@ -13,6 +13,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        $val=10;
+        $this->assertInstanceOf($val,10,'tets true');
     }
 }

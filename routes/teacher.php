@@ -21,28 +21,32 @@ Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:teacher']
-    ], function () {
+    ],
+    function () {
 
-    //==============================dashboard============================
-    Route::get('/teacherDash', function () {
+        //==============================dashboard============================
+        Route::get('/teacherDash', function () {
 
-       $ids= App\Models\Teacher::find(Auth::user()->id)->sections()->pluck('section_id');
-       $section_count= App\Models\Teacher::find(Auth::user()->id)->sections()->pluck('section_id')->count();
+            $ids = App\Models\Teacher::find(Auth::user()->id)->sections()->pluck('section_id');
+            $section_count = App\Models\Teacher::find(Auth::user()->id)->sections()->pluck('section_id')->count();
+            $st_count = App\Models\Student::whereIn('section_id', $ids)->count();
+            return view('Teachers.dashboard', compact('section_count', 'st_count'));
 
-       $st_count= App\Models\Student::whereIn('section_id',$ids)->count();
-
-
-        return view('Teachers.dashboard',compact('section_count','st_count'));
-    });
-
-
-    Route::group(['namespace'=>'Teachers\dashboard'],function(){
-        Route::resource('students','StudentController');
-    });
+        });
 
 
+        Route::group(['namespace' => 'Teachers\dashboard'], function () {
+            Route::resource('students', 'StudentController');
+            Route::get('sections', 'StudentController@sections')->name('sections');
+            Route::post('attendance','StudentController@attendance')->name('attendance');
+           Route::post('edit_attendance','StudentController@editAttendance')->name('attendance.edit');
 
 
-    
+        });
 
-});
+
+        Route::get('/personal', function () {
+            return 'ok';
+        })->name('person');
+    }
+);
